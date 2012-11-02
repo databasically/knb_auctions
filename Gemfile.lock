@@ -2,6 +2,9 @@ PATH
   remote: .
   specs:
     KidsNBids Auction Engine (0.0.1)
+      haml-rails
+      jquery-rails
+      pg
       rails (~> 3.2.8)
 
 GEM
@@ -137,8 +140,6 @@ PLATFORMS
 DEPENDENCIES
   KidsNBids Auction Engine!
   guard-rspec
-  haml-rails
   jquery-rails
-  pg
   rspec-rails
   thin
