@@ -1,0 +1,10 @@
+!!!
+
+%html
+  %head
+    %title KnbAuction
+    = stylesheet_link_tag    "knb-auction/application", :media => "all"
+    = javascript_include_tag "knb-auction/application"
+    = csrf_meta_tags
+  %body
+    = yield
