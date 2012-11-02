@@ -1309,3 +1309,25 @@ Served asset /jquery_ujs.js - 200 OK (2ms)
 
 Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-02 14:09:40 -0500
 Served asset /jquery.js - 200 OK (1ms)
+
+
+Started GET "/auction" for 127.0.0.1 at 2012-11-02 14:10:59 -0500
+Processing by KnbAuction::DashboardController#index as HTML
+  Rendered /Users/cdm/code/knb_auction/app/views/knb_auction/dashboard/index.html.haml within layouts/knb_auction/application (0.1ms)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-11-02 14:10:59 -0500
+
+
+Started GET "/assets/knb-auction/application.css?body=1" for 127.0.0.1 at 2012-11-02 14:10:59 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+Served asset /knb-auction/application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-11-02 14:10:59 -0500
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/knb-auction/application.js?body=1" for 127.0.0.1 at 2012-11-02 14:11:00 -0500
+Served asset /knb-auction/application.js - 304 Not Modified (0ms)
