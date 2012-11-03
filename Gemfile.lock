@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    KidsNBids Auction Engine (0.0.1)
+    knb_auction (0.0.1)
       haml-rails
       jquery-rails
       pg
-      rails (~> 3.2.8)
+      rails (~> 3.2)
 
 GEM
   remote: http://rubygems.org/
@@ -138,9 +138,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  KidsNBids Auction Engine!
   guard-rspec
   haml-rails
   jquery-rails
+  knb_auction!
   rspec-rails
   thin

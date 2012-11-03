@@ -2,10 +2,35 @@
 
 %html
   %head
-    %title KnbAuction
+    %title Kids-N-Bids -- Want some Goodles?
     = stylesheet_link_tag    "knb-auction/application", :media => "all"
     = stylesheet_link_tag    "http://www.kidsnbids.com/assets/application-399e8f78fb6dab2455da48144469d261.css"
     = javascript_include_tag "knb-auction/application"
     = csrf_meta_tags
+    = yield(:head)
   %body
-    = yield
+    .container
+      %header
+        %figure= link_to image_tag('logo.png', width: '267', height: '200', alt: 'Kids N Bids', title: 'Home'), main_app.root_url
+        -# .navWrap
+        -#   .nav
+        -#     = render_navigation(:level => 1)
+        %p#notice.notice{ style: "#{"display:none" if notice.blank?}" }= notice
+        %p#alert.alert{   style: "#{"display:none" if alert.blank?}" }= alert
+      .wrap
+        %article
+          %div{class: "content row #{@contentRowSubclass}"}
+            = yield
+        = yield(:below_content)
+    %footer
+      %p
+        Kids N Bids &copy; 2012
+        &bull;
+        =link_to "Contact Us", "/contact"
+        &bull;
+        == link_to "Support", "/faq"
+        &bull;
+        = link_to "lPrivacy &amp; Terms", "/terms"
+        </p>
+  -# <%= render 'common/learning_buddy' %>
+  -# <%= render 'common/google_analytics' %>
