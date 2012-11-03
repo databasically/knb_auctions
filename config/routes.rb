@@ -1,8 +1,10 @@
 KnbAuction::Engine.routes.draw do
   
-  get "dashboard/index"
+  resources :products
 
-  get "dashboard/show"
+  resources :bids
 
-  root :to => "dashboard#index" 
+  resources :auctions
+
+  root :to => "auctions#index" 
 end
