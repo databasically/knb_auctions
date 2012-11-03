@@ -6,7 +6,6 @@ PATH
       jquery-rails
       pg
       rails (~> 3.2.8)
-      rspec-rails
 
 GEM
   remote: http://rubygems.org/
@@ -143,4 +142,5 @@ DEPENDENCIES
   guard-rspec
   haml-rails
   jquery-rails
+  rspec-rails
   thin
