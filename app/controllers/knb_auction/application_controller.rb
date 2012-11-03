@@ -1,4 +1,2 @@
-module KnbAuction
-  class ApplicationController < ActionController::Base
-  end
+class KnbAuction::ApplicationController < ApplicationController
 end

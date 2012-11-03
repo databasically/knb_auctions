@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Start price:
+  = @auction.start_price
+%p
+  %b Start at:
+  = @auction.start_at
+%p
+  %b End at:
+  = @auction.end_at
+%p
+  %b Product:
+  = @auction.product_id
+%p
+  %b Created by:
+  = @auction.created_by_id
+
+= link_to 'Edit', edit_auction_path(@auction)
+\|
+= link_to 'Back', auctions_path

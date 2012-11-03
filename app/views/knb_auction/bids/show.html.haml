@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Owner:
+  = @bid.owner_id
+%p
+  %b Bid at:
+  = @bid.bid_at
+%p
+  %b Amount:
+  = @bid.amount
+%p
+  %b Auction:
+  = @bid.auction_id
+
+= link_to 'Edit', edit_bid_path(@bid)
+\|
+= link_to 'Back', bids_path

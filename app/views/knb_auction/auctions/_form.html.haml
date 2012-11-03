@@ -1,0 +1,25 @@
+= form_for @auction do |f|
+  - if @auction.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@auction.errors.count, "error")} prohibited this auction from being saved:"
+      %ul
+        - @auction.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :start_price
+    = f.text_field :start_price
+  .field
+    = f.label :start_at
+    = f.datetime_select :start_at
+  .field
+    = f.label :end_at
+    = f.datetime_select :end_at
+  .field
+    = f.label :product_id
+    = f.number_field :product_id
+  .field
+    = f.label :created_by_id
+    = f.number_field :created_by_id
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,27 @@
+%h1 Listing auctions
+
+%table
+  %tr
+    %th Start price
+    %th Start at
+    %th End at
+    %th Product
+    %th Created by
+    %th
+    %th
+    %th
+
+  - @auctions.each do |auction|
+    %tr
+      %td= auction.start_price
+      %td= auction.start_at
+      %td= auction.end_at
+      %td= auction.product_id
+      %td= auction.created_by_id
+      %td= link_to 'Show', auction
+      %td= link_to 'Edit', edit_auction_path(auction)
+      %td= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Auction', new_auction_path
