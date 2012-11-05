@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102193902) do
+ActiveRecord::Schema.define(:version => 20121104192321) do
+
+  create_table "auctions_bids", :id => false, :force => true do |t|
+    t.integer "auction_id"
+    t.integer "bid_id"
+  end
 
   create_table "knb_auction_auctions", :force => true do |t|
     t.integer  "start_price"

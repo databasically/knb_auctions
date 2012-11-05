@@ -6,5 +6,5 @@ KnbAuction::Engine.routes.draw do
 
   resources :auctions
 
-  root :to => "auctions#index" 
+  root :to => 'auctions#index' 
 end

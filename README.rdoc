@@ -3,7 +3,7 @@
 To use pow for this engine alone, you must symlink the dummy app directory, test/dummy.
 
 To mount this engine, place mount KnbAuction::Engine => "/auction", :as => "auction_engine"
-To run migration in the app using this engine, run rake knb-auction:install:migrations.
+To run migration in the app using this engine, run rake knb_auction:install:migrations.
 
 To link from the main app to the auction engine: =link_to "A Link into the Engine", auction_engine.root_url
 To link from the auction engine to the main app: =link_to "A Link out of the Engine", main_app.root_url
