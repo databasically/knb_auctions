@@ -3,7 +3,7 @@ class CreateKnbAuctionBids < ActiveRecord::Migration
     create_table :knb_auction_bids do |t|
       t.integer :owner_id
       t.datetime :bid_at
-      t.integer :amount
+      t.integer :goodles
       t.integer :auction_id
 
       t.timestamps

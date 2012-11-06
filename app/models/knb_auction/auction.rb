@@ -2,8 +2,8 @@ module KnbAuction
   class Auction < ActiveRecord::Base
     attr_accessible :created_by_id, :end_at, :start_at, :start_price
     
-    has_many :products
-    has_and_belongs_to_many :bids
+    has_one :product
+    has_many :bids
     
     #Scopes
     def self.active
@@ -15,7 +15,7 @@ module KnbAuction
     end
 
     def self.upcoming
-      where("start_at >= :now", time: Time.now ).order('start_at asc')
+      where("start_at >= :now", now: Time.now ).order('start_at asc')
     end
     
     def product_name
