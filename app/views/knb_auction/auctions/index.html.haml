@@ -5,9 +5,13 @@
     %th
     %th
     %th
+    %th
+    %th
 
   - @auctions.each do |auction|
     %tr
+      %td= start_at_local_time( auction )
+      %td= start_at_local_time( auction )
       %td= link_to 'Show', auction
       %td= link_to 'Edit', edit_auction_path(auction)
       %td= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' }
