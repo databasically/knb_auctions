@@ -1,6 +1,15 @@
+# t.integer  "start_price"
+# t.datetime "start_at"
+# t.datetime "end_at"
+# t.integer  "product_id"
+# t.integer  "created_by_id"
+# t.datetime "created_at",    :null => false
+# t.datetime "updated_at",    :null => false
+
+
 module KnbAuction
   class Auction < ActiveRecord::Base
-    attr_accessible :created_by_id, :end_at, :start_at, :start_price
+    attr_accessible :product_id, :created_by_id, :end_at, :start_at, :start_price
     
     has_one :product
     has_many :bids
@@ -20,6 +29,10 @@ module KnbAuction
     
     def product_name
       product.name
+    end
+    
+    def self.approved_products
+      Product.approved
     end
     
     def bids_count
