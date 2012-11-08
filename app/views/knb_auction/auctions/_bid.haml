@@ -1,0 +1,23 @@
+#bids
+  %h1 Bids
+
+  %table
+    %tr
+      %th Owner
+      %th Bid at
+      %th Goodles
+      %th
+      %th
+      %th
+
+    - @bids.each do |bid|
+      .bid
+        %tr
+          %td= bid.owner_name
+          %td= bid.bid_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")
+          %td= bid.goodles
+          %td= link_to 'Show', bid
+          %td= link_to 'Edit', edit_bid_path(bid)
+          %td= button_to "Delete", bid, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
+
+  = link_to 'New Bid', new_bid_path

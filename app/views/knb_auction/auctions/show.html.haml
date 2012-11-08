@@ -1,5 +1,16 @@
 %p#notice= notice
 
+%h1 Auction Details
+%h2.product=@auction.product_name
+.auction_status=@auction.status
+.start_at="Start at: #{@auction.start_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")}"
+.end_at="End at: #{@auction.end_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")}"
+%br
+%br
+
+=render :partial => "bid"
+
+%br
 
 = link_to 'Edit', edit_auction_path(@auction)
 \|

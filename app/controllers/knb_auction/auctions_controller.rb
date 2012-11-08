@@ -17,6 +17,7 @@ module KnbAuction
     # GET /auctions/1.json
     def show
       @auction = Auction.find(params[:id])
+      @bids = @auction.bids.sort_by(&:bid_at).reverse
   
       respond_to do |format|
         format.html # show.html.erb

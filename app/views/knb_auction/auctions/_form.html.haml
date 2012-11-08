@@ -7,11 +7,11 @@
           %li= msg
           
   .start-at
-    = f.label :start_at
-    = f.date_select :start_at
-  -# .duration
-  -#   = f.label :duration
-  -#   = f.text_field :duration
+    = f.label :start_at_localtime
+    = f.datetime_select :start_at_localtime
+  .duration
+    = f.label :duration
+    = f.select(:duration_string, [['1 Day', "1.day"], ['1 Week', "1.week"], ['2 Weeks', "2.weeks"], ['3 Weeks', "3.weeks"], ['1 Month', "1.month"]])
   .product
     = f.label :product
     =collection_select(:auction, :product_id, @product_dropdown, :id, :name, {include_blank: false})

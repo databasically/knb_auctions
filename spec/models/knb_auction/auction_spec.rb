@@ -16,6 +16,18 @@ module KnbAuction
       its(:closed) {should have(2).auctions}
       its(:upcoming) {should have(2).auctions}
     end
+    
+    context "return" do
+      subject {Auction}
+      
+      before(:each) do
+        let(:user) { Struct.new("User", id: 1, name: "Yukon Cornelious")  }
+        Auction.new(start_at: 1.months.ago, end_at: 1.month.from_now).save
+        
+      end
+      
+      its(:bid_liability)
+    end
   end
   
   context "" do
