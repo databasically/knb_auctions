@@ -4,6 +4,8 @@ module KnbAuction
     
     has_many :auctions
     
+    validates_presence_of :name, :on => :create, :message => "can't be blank"
+    
     def self.approved
       where(approved: true).order('name asc')
     end
