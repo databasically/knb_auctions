@@ -96,9 +96,9 @@ module KnbAuction
     end
     
     def empty_bid
-      struct_bid = Struct.new("Bid", :owner, :goodles)
-      struct_owner = Struct.new("Owner", :name, :goodles)
-      struct_bid.new(struct_owner.new("None", 0), 0)
+      struct_bid = Struct.new("Bid", :owner, :goodles, :owner_name)
+      struct_owner = Struct.new("Owner", :full_name, :goodles)
+      struct_bid.new(struct_owner.new("None", 0), 0, "None")
     end
     
     def high_bidder
