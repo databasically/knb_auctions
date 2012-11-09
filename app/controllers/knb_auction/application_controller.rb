@@ -1,2 +1,2 @@
-class KnbAuction::ApplicationController < ApplicationController
+class KnbAuction::ApplicationController < ::ApplicationController
 end

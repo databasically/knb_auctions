@@ -19,7 +19,7 @@
         %p#alert.alert{   style: "#{"display:none" if alert.blank?}" }= alert
       .wrap
         %article
-          %div{class: "content row #{@contentRowSubclass}"}
+          %div{class: "content #{@contentRowSubclass}"}
             = yield
         = yield(:below_content)
     %footer
