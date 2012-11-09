@@ -15,9 +15,9 @@
       %td= bid.bid_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")
       %td= bid.goodles
       %td= link_to 'Show', bid
-      %td= link_to 'Edit', edit_bid_path(bid)
-      %td= button_to "Delete", bid, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
+      %td= link_to 'Edit', edit_auction_bid_path(@auction, bid)
+      %td= button_to "Delete", auction_bid(bid), :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
 
 %br
 
-= link_to 'New Bid', new_bid_path
+= link_to 'New Bid', new_auction_bid_path(@auction)

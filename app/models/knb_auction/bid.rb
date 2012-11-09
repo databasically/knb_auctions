@@ -19,8 +19,8 @@ module KnbAuction
     end
     
     def high_bid
-      if self.auction.high_bid.goodles >= goodles
-        errors.add(:goodles, "must be more than the current high bid of #{self.auction.high_bid} goodles")
+      if auction.high_bid.goodles >= goodles
+        errors.add(:goodles, "must be more than the current high bid of #{auction.high_bid.goodles} goodles")
       end
     end
     

@@ -1,22 +1,12 @@
-= form_for @bid do |f|
+= form_for(@bid, :url => auction_bids_path(@auction)) do |f|
   - if @bid.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@bid.errors.count, "error")} prohibited this bid from being saved:"
+      %h2= "Your bid couldn't be sumbitted:"
       %ul
         - @bid.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :owner_id
-    = f.number_field :owner_id
-  .field
-    = f.label :bid_at
-    = f.datetime_select :bid_at
   .field
     = f.label :goodles
     = f.text_field :goodles
-  .field
-    = f.label :auction_id
-    = f.number_field :auction_id
   .actions
-    = f.submit 'Save'
+    = f.submit 'Submit Bid'
