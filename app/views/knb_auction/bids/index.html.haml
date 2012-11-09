@@ -11,7 +11,7 @@
 
   - @bids.each do |bid|
     %tr
-      %td= link_to bid.owner_name, main_app.user_path(bid.owner)
+      %td= link_to bid.owner_name, main_app.users_path(bid.owner)
       %td= bid.bid_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")
       %td= bid.goodles
       %td= link_to 'Show', bid
