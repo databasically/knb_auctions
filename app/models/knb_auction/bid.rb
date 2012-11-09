@@ -11,11 +11,12 @@ module KnbAuction
     belongs_to :owner, :class_name => "User"
     belongs_to :auction
     
-    validate :high_bid, :on => :create
-    validate :bankroll, :on => :create
+    validate :high_bid
+    validate :bankroll
+    validate :reserve_met
     
     def owner_name
-      owner.name
+      owner.full_name
     end
     
     def high_bid
@@ -27,6 +28,12 @@ module KnbAuction
     def bankroll
       if Auction.bid_liability(owner) > owner.goodles
         errors.add(:goodles, "must be less than your total liability of #{Auction.bid_liability(owner)}")
+      end
+    end
+    
+    def reserve_met
+      if auction.start_price > goodles
+        errors.add(:goodles, "must be greater than the reserve price of #{auction.start_price} goodles")
       end
     end
     

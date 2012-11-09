@@ -5,7 +5,7 @@ module KnbAuction
     # GET /auctions
     # GET /auctions.json
     def index
-      @auctions = Auction.all
+      @auctions = Auction.all.sort_by(&:end_at)
   
       respond_to do |format|
         format.html # index.html.erb
@@ -45,8 +45,8 @@ module KnbAuction
   
     # POST /auctions
     # POST /auctions.json
-    def create
-      @auction = Auction.new(params[:auction])
+    def create      
+      @auction = Auction.create_from_new(params[:auction])
   
       respond_to do |format|
         if @auction.save

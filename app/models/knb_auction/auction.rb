@@ -10,7 +10,7 @@
 module KnbAuction
   class Auction < ActiveRecord::Base
     attr_accessible :product_id, :created_by_id, :end_at, :start_at, :start_price
-    attr_accessor :duration_string, :duration, :start_at_localtime, :status, :highest_bidder
+    attr_accessor :duration, :status, :highest_bidder
     
     belongs_to :product
     has_many :bids
@@ -20,19 +20,23 @@ module KnbAuction
     validates_presence_of :start_at, :message => "cannot be blank."
     validates_presence_of :end_at, :message => "cannot be blank."
     
-    before_save :duration_string_to_end_time
-    before_save :start_time_to_utc
+    DURATION_WHITELIST = [['1 Day', 1.day.to_i], ['1 Week', 1.week.to_i], ['2 Weeks', 2.weeks.to_i], ['3 Weeks', 3.weeks.to_i], ['1 Month', 1.month.to_i]]
     
     after_initialize :initialize_working_variables
     
     def initialize_working_variables
-      @duration = start_at - end_at if end_at
-      if start_at
+      if start_at && end_at
         @status = auction_state_by_datetime
-        @start_at_localtime = start_at.localtime
+        # @start_at_localtime = start_at.localtime
       end
     end
     
+    def self.create_from_new(options = {})
+      defaults = {end_at: duration_to_end_at(options), start_at: dateselect_parse(options)}
+      options.delete(:duration)
+      options.reverse_merge!(defaults)
+      Auction.new(options)
+    end
 
     def self.active
       where("start_at <= :now AND end_at >= :now", now: Time.now ).order('start_at asc')
@@ -88,7 +92,13 @@ module KnbAuction
     end
     
     def high_bid
-      @high_bid ||= bids.sort_by(&:goodles).last
+      @high_bid ||= bids.sort_by(&:goodles).last || empty_bid
+    end
+    
+    def empty_bid
+      struct_bid = Struct.new("Bid", :owner, :goodles)
+      struct_owner = Struct.new("Owner", :name, :goodles)
+      struct_bid.new(struct_owner.new("None", 0), 0)
     end
     
     def high_bidder
@@ -108,11 +118,17 @@ module KnbAuction
       end
     end
     
-    def duration_string_to_end_time
-      # duration_string.call
+    def self.duration_to_end_at(options = {})
+      dateselect_parse(options) + options[:duration].to_i.seconds
     end
     
-    def start_time_to_utc
+    def self.dateselect_parse(options)
+      year  = options["start_at(1i)"].to_i
+      month = options["start_at(2i)"].to_i
+      day   = options["start_at(3i)"].to_i
+      hour  = options["start_at(4i)"].to_i
+      min   = options["start_at(5i)"].to_i
+      DateTime.new(year, month, day, hour, min)
     end
   end
 end
