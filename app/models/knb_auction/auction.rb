@@ -26,16 +26,14 @@ module KnbAuction
     after_initialize :initialize_working_variables
     
     def initialize_working_variables
-      if end_at
-        @duration = start_at - end_at
+      @duration = start_at - end_at if end_at
+      if start_at
+        @status = auction_state_by_datetime
+        @start_at_localtime = start_at.localtime
       end
-      
-      @status = auction_state_by_datetime
-      
-      @start_at_localtime = start_at.localtime
     end
     
-    #Scopes
+
     def self.active
       where("start_at <= :now AND end_at >= :now", now: Time.now ).order('start_at asc')
     end
