@@ -1,4 +1,4 @@
-def User
+class User
   def active_bid_liability
     KnbAuction::Auction.active.bid_liability(self)
   end
