@@ -83,10 +83,6 @@ module KnbAuction
       product.name
     end
     
-    def self.approved_products
-      Product.approved
-    end
-    
     def bids_count
       bids.size
     end
@@ -96,9 +92,15 @@ module KnbAuction
     end
     
     def empty_bid
-      struct_bid = Struct.new("Bid", :owner, :goodles, :owner_name)
-      struct_owner = Struct.new("Owner", :full_name, :goodles)
-      struct_bid.new(struct_owner.new("None", 0), 0, "None")
+      temp_bid.new(temp_owner.new("None", 0), 0, "None")
+    end
+    
+    def temp_bid
+      @temp_bid ||= Struct.new("TempBid", :owner, :goodles, :owner_name)
+    end
+    
+    def temp_owner
+      @temp_owner ||= Struct.new("TempOwner", :full_name, :goodles)
     end
     
     def high_bidder
