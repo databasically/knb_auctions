@@ -20,10 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency "haml-rails"
   s.add_dependency "jquery-rails"
   s.add_dependency "pg"
-  s.add_dependency "coffee-rails"
-  s.add_dependency "twitter-bootstrap-rails"
-  s.add_dependency "therubyracer"
-  s.add_dependency "less-rails"
   
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "thin"
