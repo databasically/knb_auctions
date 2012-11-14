@@ -9,16 +9,18 @@
 
 module KnbAuction
   class Auction < ActiveRecord::Base
-    attr_accessible :product_id, :created_by_id, :end_at, :start_at, :start_price
-    attr_accessor :duration, :status, :highest_bidder
-    
     belongs_to :product
     has_many :bids
+
+    accepts_nested_attributes_for :bids
+    attr_accessible :product, :created_by_id, :end_at, :start_at, :start_price
+    attr_accessor :duration, :status, :highest_bidder
+
     
-    validates_presence_of :product_id
-    validates_associated :product
-    validates_presence_of :start_at, :message => "cannot be blank."
-    validates_presence_of :end_at, :message => "cannot be blank."
+    validates_associated :bid
+    validates_presence_of :product
+    validates_presence_of :start_at
+    validates_presence_of :end_at
     
     DURATION_WHITELIST = [['1 Day', 1.day.to_i], ['1 Week', 1.week.to_i], ['2 Weeks', 2.weeks.to_i], ['3 Weeks', 3.weeks.to_i], ['1 Month', 1.month.to_i]]
     

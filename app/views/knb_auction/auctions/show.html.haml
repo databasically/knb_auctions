@@ -1,6 +1,7 @@
 %h1 Auction Details
 %h2.product= link_to @auction.product_name, @auction.product
-.auction_status=@auction.status
+.auction_status
+  - status_label(@auction.status) {@auction.status.to_s.upcase}
 .start_at="Start at: #{@auction.start_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")}"
 .end_at="End at: #{@auction.end_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")}"
 %br

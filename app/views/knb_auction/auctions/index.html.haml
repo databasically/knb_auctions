@@ -1,8 +1,9 @@
-%h1 Active Auctions
+%h1 Auctions
 
 %table
   %tr
     %th Product
+    %th
     %th Start Date
     %th Start Time
     %th End Date
@@ -16,6 +17,8 @@
   - @auctions.each do |auction|
     %tr
       %td= link_to auction.product_name, auction
+      %td
+        - status_label(auction.status) {auction.status.to_s.upcase}
       %td= start_at_local_time( auction ).to_date
       %td= start_at_local_time( auction ).strftime("%I:%M %p %Z")
       %td= end_at_local_time( auction ).to_date
