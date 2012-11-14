@@ -30,7 +30,7 @@ module KnbAuction
     # GET /bids/new.json
     def new
       @auction = Auction.find(params[:auction_id])
-      @bid = Bid.new
+      @bid = @auction.bids.build
   
       respond_to do |format|
         format.html # new.html.erb
@@ -48,7 +48,7 @@ module KnbAuction
     # POST /bids.json
     def create
       @auction = Auction.find(params[:auction_id])
-      params[:bid].reverse_merge!({bid_at: DateTime.now, owner_id: current_user.id})
+      params[:bid].reverse_merge!({owner_id: current_user.id})
       @bid = @auction.bids.build(params[:bid])
   
       respond_to do |format|

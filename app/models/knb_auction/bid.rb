@@ -7,13 +7,18 @@
 
 module KnbAuction
   class Bid < ActiveRecord::Base
-    attr_accessible :goodles, :bid_at, :owner_id, :auction_id
     belongs_to :owner, :class_name => "User"
     belongs_to :auction
     
+    attr_accessible :goodles, :bid_at, :owner_id, :auction_id
+    
+    validates_presence_of :auction_id
+    
+    # validate :auction_open
+    validate :reserve_met
     validate :high_bid
     validate :bankroll
-    validate :reserve_met
+
     
     def owner_name
       owner.full_name
@@ -34,6 +39,12 @@ module KnbAuction
     def reserve_met
       if auction.start_price > goodles
         errors.add(:goodles, "must be greater than the reserve price of #{auction.start_price} goodles")
+      end
+    end
+    
+    def auction_open
+      unless (auction.start_at <= updated_at) && (auction_end_at >= updated_at)
+        errors.add(:bid_at, "Auction isn't open")
       end
     end
     

@@ -1,5 +1,7 @@
 %h1= "New bid for #{@auction.product_name.downcase}"
 
+=@bid.inspect
+
 = render 'form'
 
 = link_to 'Cancel Bid', auction_path(@auction)
