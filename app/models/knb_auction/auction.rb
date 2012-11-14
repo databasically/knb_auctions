@@ -13,11 +13,11 @@ module KnbAuction
     has_many :bids
 
     accepts_nested_attributes_for :bids
-    attr_accessible :product, :created_by_id, :end_at, :start_at, :start_price
+    attr_accessible :product_id, :created_by_id, :end_at, :start_at, :start_price
     attr_accessor :duration, :status, :highest_bidder
 
     
-    validates_associated :bid
+    validates_associated :bids
     validates_presence_of :product
     validates_presence_of :start_at
     validates_presence_of :end_at
