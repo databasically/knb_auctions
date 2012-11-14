@@ -5,10 +5,12 @@
       %ul
         - @product.errors.full_messages.each do |msg|
           %li= msg
-
+  .field
+    = f.label :approved
+    = f.check_box :approved
   .field
     = f.label :name
-    = f.text_area :name
+    = f.text_field :name
   .field
     = f.label :description
     = f.text_area :description
@@ -21,9 +23,6 @@
   .field
     = f.label :upc
     = f.text_field :upc
-  .field
-    = f.label :approved
-    = f.check_box :approved
   .field
     = f.label :supplier_id
     = f.number_field :supplier_id
