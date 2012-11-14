@@ -25,10 +25,11 @@
       %td= end_at_local_time( auction ).strftime("%I:%M %p %Z")
       %td= auction.high_bid.owner_name
       %td= auction.high_bid.goodles
-      %td= link_to 'Details', auction
-      %td= link_to 'Edit', edit_auction_path(auction)
-      %td= button_to "Delete", auction, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
+      - if current_user.admin?
+        %td= link_to 'Details', auction
+        %td= link_to 'Edit', edit_auction_path(auction)
+        %td= button_to "Delete", auction, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
 
 %br
-
-= link_to 'Create a new Auction', new_auction_path
+- if current_user.admin?
+  = link_to 'Create a new Auction', new_auction_path

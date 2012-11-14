@@ -29,7 +29,7 @@ module KnbAuction
     # GET /auctions/new.json
     def new
       @auction = Auction.new
-      @product_dropdown = Products.approved
+      @product_dropdown = Product.approved
   
       respond_to do |format|
         format.html # new.html.erb
@@ -40,7 +40,7 @@ module KnbAuction
     # GET /auctions/1/edit
     def edit
       @auction = Auction.find(params[:id])
-      @product_dropdown = Products.approved
+      @product_dropdown = Product.approved
     end
   
     # POST /auctions
