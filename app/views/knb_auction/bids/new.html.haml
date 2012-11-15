@@ -1,6 +1,4 @@
-%h1= "New bid for #{@auction.product_name.downcase}"
-
-=@bid.inspect
+%h1= "New bid for #{@auction.product_name.upcase}"
 
 = render 'form'
 

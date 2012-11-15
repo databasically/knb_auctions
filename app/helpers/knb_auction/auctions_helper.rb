@@ -19,8 +19,18 @@ module KnbAuction
         haml_tag(:span, yield, class: "label label-warning")
       else
         haml_tag(:span, yield, class: "label label-info")
-      end
-        
+      end 
     end
+    
+    def bid_owner_name( auction )
+      if current_user.admin?
+        auction.high_bid.owner_name
+      elsif current_user == auction.high_bidder
+        "You're winning!"
+      else
+        "Another goodler"
+      end
+    end
+    
   end
 end

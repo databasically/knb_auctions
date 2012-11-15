@@ -13,6 +13,7 @@ module KnbAuction
     attr_accessible :goodles, :bid_at, :owner_id, :auction_id
     
     validates_presence_of :auction_id
+    validates_presence_of :bid_at
     
     # validate :auction_open
     validate :reserve_met

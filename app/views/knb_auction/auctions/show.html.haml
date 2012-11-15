@@ -13,6 +13,7 @@
 %br
 %br
 
-= link_to 'Edit this Auction', edit_auction_path(@auction)
-\|
 = link_to 'Auctions List', auctions_path
+- if current_user.admin?
+  \|
+  = link_to 'Edit this Auction', edit_auction_path(@auction)
