@@ -28,7 +28,8 @@ module KnbAuction
     
     def bid_owner_name( auction )
       if current_user.admin?
-        concat link_to(auction.high_bid.owner_name, auction.high_bidder)
+        auction.high_bid.owner_name
+        # concat link_to(auction.high_bid.owner_name, auction.high_bidder)
       elsif current_user == auction.high_bidder
         "You're winning!"
       else
