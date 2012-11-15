@@ -10,21 +10,25 @@ module KnbAuction
     end
     
     def status_label( status )
+      haml_tag(:span, yield, class: "label #{status_labeler( status )}")
+    end
+    
+    def status_labeler( status )
       case status
       when :active
-        haml_tag(:span, yield, class: "label label-success")
+        "label-success"
       when :closed
-        haml_tag(:span, yield, class: "label label-important")
+        "label-important"
       when :upcoming
-        haml_tag(:span, yield, class: "label label-warning")
+        "label-warning"
       else
-        haml_tag(:span, yield, class: "label label-info")
-      end 
+        "label-info"
+      end
     end
     
     def bid_owner_name( auction )
       if current_user.admin?
-        auction.high_bid.owner_name
+        concat link_to(auction.high_bid.owner_name, auction.high_bidder)
       elsif current_user == auction.high_bidder
         "You're winning!"
       else

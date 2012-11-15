@@ -12,8 +12,7 @@
   - @bids.each do |bid|
     .bid
       %tr
-        - if current_user.admin? || current_user == bid.owner
-          %td= link_to bid.owner_name, main_app.user_path(bid.owner)
+        %td= bid_owner_name( @auction )
         %td= bid.bid_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")
         %td= bid.goodles
         - if current_user.admin?
