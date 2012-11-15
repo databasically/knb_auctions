@@ -15,11 +15,16 @@ module KnbAuction
     validates_presence_of :auction_id
     validates_presence_of :bid_at
     
-    # validate :auction_open
+    validate :auction_open
     validate :reserve_met
     validate :high_bid
     validate :bankroll
-
+    
+    before_validation :default_values
+    
+    def default_values
+      self.bid_at ||= DateTime.now
+    end
     
     def owner_name
       owner.full_name
@@ -44,7 +49,7 @@ module KnbAuction
     end
     
     def auction_open
-      unless (auction.start_at <= updated_at) && (auction_end_at >= updated_at)
+      unless (auction.start_at <= bid_at) && (auction.end_at >= bid_at)
         errors.add(:bid_at, "Auction isn't open")
       end
     end

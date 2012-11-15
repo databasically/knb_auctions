@@ -16,7 +16,6 @@ module KnbAuction
     attr_accessible :product_id, :created_by_id, :end_at, :start_at, :start_price
     attr_accessor :duration, :status, :highest_bidder
 
-    
     validates_associated :bids
     validates_presence_of :product
     validates_presence_of :start_at
@@ -33,11 +32,18 @@ module KnbAuction
       end
     end
     
-    def self.create_from_new(options = {})
+    def self.new_for_auction(options = {})
+      Auction.new(Auction.adjusted_parameters(options))
+    end
+    
+    def self.update_attributes_for_auction(options = {})
+      Auction.update_attributes(Auction.adjusted_parameters(options))
+    end
+    
+    def self.calculation_parameters(options)
       defaults = {end_at: duration_to_end_at(options), start_at: dateselect_parse(options)}
       options.delete(:duration)
-      options.reverse_merge!(defaults)
-      Auction.new(options)
+      options.reverse_merge(defaults)
     end
 
     def self.active
@@ -45,7 +51,7 @@ module KnbAuction
     end
     
     def active?
-      time_now = Time.now
+      time_now = DateTime.now
       (start_at <= time_now) && (end_at >= time_now)
     end
 
@@ -54,7 +60,7 @@ module KnbAuction
     end
     
     def closed?
-      now = Time.now
+      now = DateTime.now
       end_at < now
     end
 
@@ -63,7 +69,7 @@ module KnbAuction
     end
     
     def upcoming?
-      now = Time.now
+      now = DateTime.now
       start_at > now
     end
     
@@ -90,7 +96,7 @@ module KnbAuction
     end
     
     def high_bid
-      @high_bid ||= bids.sort_by(&:goodles).last || empty_bid
+      @high_bid ||= (bids.sort_by(&:goodles).last || empty_bid)
     end
     
     def empty_bid

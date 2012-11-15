@@ -46,7 +46,7 @@ module KnbAuction
     # POST /auctions
     # POST /auctions.json
     def create      
-      @auction = Auction.create_from_new(params[:auction])
+      @auction = Auction.new_for_auction(params[:auction])
   
       respond_to do |format|
         if @auction.save
@@ -65,7 +65,7 @@ module KnbAuction
       @auction = Auction.find(params[:id])
   
       respond_to do |format|
-        if @auction.update_attributes(params[:auction])
+        if @auction.update_attributes_for_auction(params[:auction])
           format.html { redirect_to @auction, notice: 'Auction was successfully updated.' }
           format.json { head :no_content }
         else
