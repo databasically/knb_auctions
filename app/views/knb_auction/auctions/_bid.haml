@@ -21,4 +21,5 @@
           %td= link_to 'Edit', edit_auction_bid_path(@auction, bid)
           %td= button_to "Delete", auction_bid_path(@auction, bid), :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
 
-= link_to 'New Bid', new_auction_bid_path(@auction)
+-if @auction.active?
+  = link_to 'New Bid', new_auction_bid_path(@auction)
