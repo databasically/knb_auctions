@@ -16,12 +16,13 @@
       %table.auction-item
         %tr
           %td.product-image{style: "width: 60px; height:60px;"}
-          %td.product-name= link_to auction.product_name, auction
+          %td.product-name
+            .name= link_to auction.product_name, auction
           -if auction.active?
             %td.time-left
               = auction_time_left( auction )
               .time-left-label="left to bid"
-          %td
+          %td.high-bid-info
             .high-bid= "#{auction.high_bid.goodles} G"
             .high-bidder= link_to bid_owner_name( auction ), main_app.user_path(auction.high_bidder)
           -if auction.active?
