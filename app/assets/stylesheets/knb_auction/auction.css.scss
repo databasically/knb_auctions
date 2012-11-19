@@ -1,0 +1,98 @@
+ol.auction-list {
+  list-style-type: none;
+  
+  li.auction {
+    margin:10px;
+  	padding:5px;
+  	height: 90px;
+  	background-color:none!important;
+  	background: #bce6fc; /* Old browsers */
+  	background: -moz-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* FF3.6+ */
+  	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bce6fc), color-stop(100%, #e8f0f6)); /* Chrome,Safari4+ */
+  	background: -webkit-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* Chrome10+,Safari5.1+ */
+  	background: -o-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* Opera 11.10+ */
+  	background: -ms-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* IE10+ */
+  	background: linear-gradient(to bottom, #bce6fc 0%, #e8f0f6 100%); /* W3C */
+  	border: 2px solid white;
+  	border-radius: 15px;
+  }
+  
+  .status-label {
+    float:left;
+  }
+  
+  .auction-item {
+    width:100%;
+    overflow:no-display;
+  }
+  
+  td.product-image {
+    width:10%;
+
+  }
+
+  .high-bid {
+    text-align:center;
+    color:#5b9dbf;
+    font: 2em "Comfort-Regular", cursive;
+  }
+ 
+  .high-bidder {
+    text-align:center;
+    color:#5b9dbf;
+    font: 1em "Comfort-Regular", cursive;
+    overflow:hidden;
+  }
+  
+  td.product-name {
+    width:50%;
+    font-size:2em;
+    line-height:1em;
+    text-align:left;
+    vertical-align:text-top;
+    overflow:hidden;
+  }
+  
+  td.time-left {
+    width: 15%;
+    font: 2em "Comfort-Regular", cursive;
+    text-align:center;
+    color:#BE3009;
+    .time-left-label {
+      font: .5em "Comfort-Regular", cursive;
+    }
+  }
+  
+  td.bid-button{
+    display: block;
+    width: 100px;
+    padding: 8px 0px 3px;
+    height: 34px;
+    border: 3px solid #fff;
+    background: #D5451C;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #D5451C), color-stop(14%, #F04E1F), color-stop(83%, #FDAF10), color-stop(100%, #FCE3AF));
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d5451c', endColorstr='#fce3af', GradientType=0 );
+    font: 24px Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    behavior: url(/PIE.htc);
+    background: #fce3af; /* Old browsers */
+    background: -moz-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fce3af), color-stop(14%, #fdaf10), color-stop(87%, #f04e1f), color-stop(100%, #d5451c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fce3af', endColorstr='#d5451c', GradientType=0 ); /* IE6-9 */
+  }
+  
+  .admin-menu {
+    float: right;
+  }
+}
