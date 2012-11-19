@@ -1,5 +1,4 @@
-%h1= "New bid for #{@auction.product_name.upcase}"
-="(Current High Bid is #{@auction.high_bid.goodles})"
-= render 'form'
-%br
-= link_to 'Cancel Bid', auction_path(@auction)
+= render :partial => "knb_auction/application/auction_engine"
+
+%h1.title= "New bid for #{@auction.product_name.upcase}"
+.bid-entry-form= render 'form'

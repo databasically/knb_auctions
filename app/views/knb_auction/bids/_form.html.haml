@@ -5,8 +5,11 @@
       %ul
         - @bid.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :goodles
+  .minimum-bid= minimum_bid(@auction)
+  .bid-entry
+    = f.label "How many Goodles do you want to bid?"
     = f.text_field :goodles
   .actions
     = f.submit 'Submit Bid'
+    \|
+    = link_to 'Cancel Bid', auction_path(@auction)

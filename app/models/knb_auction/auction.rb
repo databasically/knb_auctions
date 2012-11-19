@@ -40,7 +40,7 @@ module KnbAuction
       Auction.update_attributes(Auction.adjusted_parameters(options))
     end
     
-    def self.calculation_parameters(options)
+    def self.adjusted_parameters(options)
       defaults = {end_at: duration_to_end_at(options), start_at: dateselect_parse(options)}
       options.delete(:duration)
       options.reverse_merge(defaults)

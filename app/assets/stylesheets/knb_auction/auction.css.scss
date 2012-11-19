@@ -1,6 +1,13 @@
 ol.auction-list {
   list-style-type: none;
   
+  td{
+    padding:0;
+  }
+  
+  .admin-menu td{
+    padding-left:4px;
+  }
   li.auction {
     margin:10px;
   	padding:5px;
@@ -17,10 +24,6 @@ ol.auction-list {
   	border-radius: 15px;
   }
   
-  .status-label {
-    float:left;
-  }
-  
   .auction-item {
     width:100%;
     overflow:no-display;
@@ -28,7 +31,6 @@ ol.auction-list {
   
   td.product-image {
     width:10%;
-
   }
 
   .high-bid {
@@ -46,42 +48,64 @@ ol.auction-list {
   
   td.product-name {
     width:50%;
-    font-size:2em;
-    line-height:1em;
     text-align:left;
-    vertical-align:text-top;
-    overflow:hidden;
   }
   
   td.time-left {
     width: 15%;
-    font: 2em "Comfort-Regular", cursive;
-    text-align:center;
-    color:#BE3009;
     .time-left-label {
       font: .5em "Comfort-Regular", cursive;
     }
   }
   
-  td.bid-button{
-    display: block;
-    width: 100px;
-    padding: 8px 0px 3px;
-    height: 34px;
+  .admin-menu {
+    float: right;
+  }
+}
+
+.bid-table{
+  margin:10px auto;
+}
+
+.status-label {
+  margin-bottom:5px;
+  float:left;
+}
+
+.time-left {
+  font: 2em "Comfort-Regular", cursive;
+  text-align:center;
+  color:#BE3009;
+}
+
+.product-name {
+  font-size:2em;
+  line-height:1em;
+  text-align:center;
+  overflow:hidden;
+  a{
+    vertical-align:text-top;
+  }
+}
+
+.bid-button{
+  vertical-align:middle;
+  text-align:center;
+  a{
+    padding: 3px 5px;
     border: 3px solid #fff;
     background: #D5451C;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #D5451C), color-stop(14%, #F04E1F), color-stop(83%, #FDAF10), color-stop(100%, #FCE3AF));
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d5451c', endColorstr='#fce3af', GradientType=0 );
-    font: 24px Verdana, Geneva, sans-serif;
+    font: 1.5em Verdana, Geneva, sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    color: white;
+    color: white!important;
     border-radius: 14px;
     -webkit-border-radius: 14px;
     -moz-border-radius: 14px;
     border-radius: 14px;
-    behavior: url(/PIE.htc);
     background: #fce3af; /* Old browsers */
     background: -moz-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fce3af), color-stop(14%, #fdaf10), color-stop(87%, #f04e1f), color-stop(100%, #d5451c)); /* Chrome,Safari4+ */
@@ -90,9 +114,5 @@ ol.auction-list {
     background: -ms-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* IE10+ */
     background: linear-gradient(to bottom, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fce3af', endColorstr='#d5451c', GradientType=0 ); /* IE6-9 */
-  }
-  
-  .admin-menu {
-    float: right;
   }
 }
