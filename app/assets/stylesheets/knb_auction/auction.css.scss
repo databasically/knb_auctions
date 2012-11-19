@@ -26,7 +26,6 @@ ol.auction-list {
   
   .auction-item {
     width:100%;
-    overflow:no-display;
   }
   
   td.product-image {
@@ -79,6 +78,7 @@ ol.auction-list {
 }
 
 .product-name {
+  height: 2.5em;
   font-size:2em;
   line-height:1em;
   text-align:center;
