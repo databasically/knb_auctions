@@ -6,7 +6,7 @@ module KnbAuction
     end
     
     def end_at_local_time( auction )
-      auction.end_at ? auction.end_at.localtime : (auction.start_at + 2.weeks).localtime
+      auction.end_at.localtime
     end
     
     def status_label( status )
@@ -35,6 +35,10 @@ module KnbAuction
       else
         "Another goodler"
       end
+    end
+    
+    def auction_time_left( auction )
+      distance_of_time_in_words_to_now(auction.end_at)
     end
     
   end
