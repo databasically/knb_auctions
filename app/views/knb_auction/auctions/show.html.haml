@@ -3,7 +3,7 @@
 .status-label
   - status_label(@auction.status) {@auction.status.to_s.upcase}
 %h1.title
-  = "Auction Details for"
+  = "Auction for"
   = link_to @auction.product_name, @auction.product
 .time-left
   = auction_time_left( @auction ) + " left to bid"

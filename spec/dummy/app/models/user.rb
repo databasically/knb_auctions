@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   attr_accessible :full_name, :goodles, :email, :password, :password_confirmation, :remember_me
   
   def admin?
-    false
+    true
+  end
+  
+  def child?
+    true
   end
 end

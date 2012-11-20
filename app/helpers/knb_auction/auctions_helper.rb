@@ -30,8 +30,10 @@ module KnbAuction
       if current_user.admin?
         auction.high_bid.owner_name
         # concat link_to(auction.high_bid.owner_name, auction.high_bidder)
-      elsif current_user == auction.high_bidder
+      elsif current_user == auction.high_bidder && auction.active?
         "You're winning!"
+      elsif current_user == auction.high_bidder && auction.closed?
+        "You won!"
       else
         "Another goodler"
       end

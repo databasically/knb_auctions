@@ -2,17 +2,16 @@
 
 %h1.title Auctions
 
-- @auctions.each do |auction|
-  %ol.auction-list
+%ul.auction-list
+  - @auctions.each do |auction|
     %li.auction
-      .status-label
+      .status-label.upper.left
         - status_label(auction.status) {auction.status.to_s.upcase}
       - if current_user.admin?
-        %table.admin-menu
-          %tr
-            %td= link_to 'Details', auction
-            %td= link_to 'Edit', edit_auction_path(auction)
-            %td= button_to "Delete", auction, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
+        .admin-menu.upper.right
+          %ul
+            %li= link_to 'Edit', edit_auction_path(auction)
+            %li= button_to "Delete", auction, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
       %table.auction-item
         %tr
           %td.product-image{style: "width: 60px; height:60px;"}
@@ -24,8 +23,8 @@
               .time-left-label="left to bid"
           %td.high-bid-info
             .high-bid= "#{auction.high_bid.goodles} G"
-            .high-bidder= link_to bid_owner_name( auction ), main_app.user_path(auction.high_bidder)
-          -if auction.active?
+            .high-bidder= bid_owner_name( auction )
+          -if auction.active? && current_user.child?
             %td.bid-button= link_to 'Bid', new_auction_bid_path(auction)
 
 
