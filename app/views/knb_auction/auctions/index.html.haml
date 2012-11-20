@@ -14,7 +14,7 @@
             %li= button_to "Delete", auction, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
       %table.auction-item
         %tr
-          %td.product-image{style: "width: 60px; height:60px;"}
+          %td.product-image{style: "width: 75px; height:75px;"}
           %td.product-name
             .name= link_to auction.product_name, auction
           -if auction.active?

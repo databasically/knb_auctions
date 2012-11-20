@@ -29,18 +29,22 @@ ul.auction-list {
   }
   
   td.product-image {
-    width:90px;
+    max-width:75px;
     padding:2px;
   }
   
   td.product-name {
-    max-width:55%;
+    width:60%;
+    max-width:450px;
     text-align:left;
+    .name {
+      max-height:80px;
+      overflow:hidden;
+    }
   }
   
   .high-bid-info {
     vertical-align:middle;
-    width: 150px;
   }
 
   .high-bid {
