@@ -1,0 +1,18 @@
+%p
+  %b Price:
+  = @product.price
+%p
+  %b Sku:
+  = @product.sku
+%p
+  %b Upc:
+  = @product.upc
+%p
+  %b Approved:
+  = @product.approved
+%p
+  %b Supplier:
+  = @product.supplier_id
+
+= link_to 'Edit', edit_product_path(@product)
+\|

@@ -2,6 +2,7 @@ require_dependency "knb_auction/application_controller"
 
 module KnbAuction
   class ProductsController < ApplicationController
+        
     # GET /products
     # GET /products.json
     def index

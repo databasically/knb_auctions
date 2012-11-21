@@ -4,27 +4,27 @@ module KnbAuction
   class BidsController < ApplicationController
     # GET /bids
     # GET /bids.json
-    def index
-      @auction = Auction.find(params[:auction_id])
-      @bids = Bid.all.sort_by(&:bid_at).reverse
-  
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @bids }
-      end
-    end
+    # def index
+    #   @auction = Auction.find(params[:auction_id])
+    #   @bids = Bid.all.sort_by(&:bid_at).reverse
+    #   
+    #   respond_to do |format|
+    #     format.html # index.html.erb
+    #     format.json { render json: @bids }
+    #   end
+    # end
   
     # GET /bids/1
     # GET /bids/1.json
-    def show
-      @auction = Auction.find(params[:auction_id])
-      @bid = Bid.find(params[:id])
-  
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @bid }
-      end
-    end
+    # def show
+    #   @auction = Auction.find(params[:auction_id])
+    #   @bid = Bid.find(params[:id])
+    #   
+    #   respond_to do |format|
+    #     format.html # show.html.erb
+    #     format.json { render json: @bid }
+    #   end
+    # end
   
     # GET /bids/new
     # GET /bids/new.json
