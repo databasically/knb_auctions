@@ -23,7 +23,7 @@
               .time-left-label="left to bid"
           %td.high-bid-info
             .high-bid= "#{auction.high_bid.goodles} G"
-            .high-bidder= bid_owner_name( auction )
+            .high-bidder= bid_owner_name( auction.high_bid )
           -if auction.active? && current_user.child?
             %td.bid-button= link_to 'Bid', new_auction_bid_path(auction)
 

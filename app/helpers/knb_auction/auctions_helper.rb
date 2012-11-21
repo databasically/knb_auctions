@@ -26,14 +26,18 @@ module KnbAuction
       end
     end
     
-    def bid_owner_name( auction )
+    def bid_owner_name( bid )
       if current_user.admin?
-        auction.high_bid.owner_name
+        bid.owner_name
         # concat link_to(auction.high_bid.owner_name, auction.high_bidder)
-      elsif current_user == auction.high_bidder && auction.active?
-        "You're winning!"
-      elsif current_user == auction.high_bidder && auction.closed?
-        "You won!"
+      elsif current_user == bid.owner
+        if current_user == bid.auction.high_bidder && bid.goodles == bid.auction.high_bid.goodles && bid.auction.active? 
+          "You're winning!"
+        elsif current_user == bid.auction.high_bidder && bid.goodles == bid.auction.high_bid.goodles && bid.auction.closed?
+          "You won!"
+        else
+          "You"
+        end
       else
         "Another goodler"
       end

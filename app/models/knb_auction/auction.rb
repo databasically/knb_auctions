@@ -77,6 +77,13 @@ module KnbAuction
       find_by_highest_bidder(user).inject(0) { |goodles, auction|  goodles += auction.high_bid.goodles}
     end
     
+    def self.goodles_to_spend(user)
+      return 0 unless user.goodles
+      goodles_liquid = user.goodles - Auction.bid_liability(user)
+      return 0 if goodles_liquid <= 0
+      goodles_liquid.to_i
+    end
+    
     def self.find_by_highest_bidder(user)
       self.all.select do |auction|
         if auction.high_bidder == user
@@ -91,6 +98,14 @@ module KnbAuction
       product.name
     end
     
+    def product_description
+      if product.description
+        product.description
+      else
+        ""
+      end
+    end
+    
     def bids_count
       bids.size
     end
@@ -100,7 +115,7 @@ module KnbAuction
     end
     
     def empty_bid
-      temp_bid.new(temp_owner.new("None", 0), 0, "None")
+      temp_bid.new(temp_owner.new("None", 0), start_price.to_i, "None")
     end
     
     def temp_bid
