@@ -1,4 +1,4 @@
-# t.integer  "start_price"
+# t.integer  "reserve"
 # t.datetime "start_at"
 # t.datetime "end_at"
 # t.integer  "product_id"
@@ -13,7 +13,7 @@ module KnbAuction
     has_many :bids
 
     accepts_nested_attributes_for :bids
-    attr_accessible :product_id, :created_by_id, :end_at, :start_at, :start_price
+    attr_accessible :product_id, :created_by_id, :end_at, :start_at, :reserve
     attr_accessor :duration, :status, :highest_bidder
 
     validates_associated :bids
@@ -115,7 +115,7 @@ module KnbAuction
     end
     
     def empty_bid
-      temp_bid.new(temp_owner.new("None", 0), start_price.to_i, "None")
+      temp_bid.new(temp_owner.new("None", 0), reserve.to_i, "None")
     end
     
     def temp_bid

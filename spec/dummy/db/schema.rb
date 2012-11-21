@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(:version => 20121114211621) do
 
   create_table "knb_auction_auctions", :force => true do |t|
-    t.integer  "start_price"
+    t.integer  "reserve",       :default => 0, :null => false
     t.datetime "start_at"
     t.datetime "end_at"
     t.integer  "product_id"
     t.integer  "created_by_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "knb_auction_bids", :force => true do |t|

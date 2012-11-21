@@ -43,8 +43,8 @@ module KnbAuction
     end
     
     def reserve_met
-      if auction.start_price > goodles
-        errors.add(:goodles, "must be greater than the reserve price of #{auction.start_price} goodles")
+      if auction.reserve > goodles
+        errors.add(:goodles, "must be greater than the reserve price of #{auction.reserve} goodles")
       end
     end
     

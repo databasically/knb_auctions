@@ -16,7 +16,7 @@
     = f.label :product
     =collection_select(:auction, :product_id, @product_dropdown, :id, :name, {include_blank: false})
   .start-price
-    = f.label :start_price
-    = f.text_field :start_price
+    = f.label :reserve
+    = f.text_field :reserve
   .actions
     = f.submit 'Save'
