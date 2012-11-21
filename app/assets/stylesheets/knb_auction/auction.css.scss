@@ -1,3 +1,7 @@
+AuctionPage {
+  position:relative;
+}
+
 ul.auction-list {
   list-style-type: none;
   
@@ -30,7 +34,9 @@ ul.auction-list {
   
   td.product-image {
     max-width:75px;
-    padding:2px;
+    padding:7px;
+    position:static;
+    margin: 0px;
   }
   
   td.product-name {
@@ -108,6 +114,12 @@ ul.auction-list {
   font-size:2em;
   line-height:1.33;
   text-align:center;
+}
+
+.product-image {
+//  background:#ccc;
+  position:absolute;
+  margin: 50px;
 }
 
 .bid-button{
