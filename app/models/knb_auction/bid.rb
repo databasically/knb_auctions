@@ -37,7 +37,7 @@ module KnbAuction
     end
     
     def bankroll
-      if Auction.goodles_to_spend(owner) < auction.high_bid.goodles
+      if Auction.goodles_to_spend(owner) < goodles
         errors.add(:goodles, "must be less than your maximum bid of #{Auction.goodles_to_spend(owner)}")
       end
     end
