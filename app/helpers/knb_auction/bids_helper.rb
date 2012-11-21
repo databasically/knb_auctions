@@ -1,7 +1,7 @@
 module KnbAuction
   module BidsHelper
     def minimum_bid(auction)
-      minimum_bid_string = "Minimum Bid is"
+      minimum_bid_string = "The minimum bid is"
       if auction.start_price > auction.high_bid.goodles
        "#{minimum_bid_string} #{auction.start_price} G"
       else
@@ -10,7 +10,7 @@ module KnbAuction
     end
     
     def goodles_to_spend(user)
-      Auction.bid_liability(user)
+      Auction.goodles_to_spend(user)
     end
   end
     

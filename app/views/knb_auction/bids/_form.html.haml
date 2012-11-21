@@ -5,8 +5,6 @@
       %ul
         - @bid.errors.full_messages.each do |msg|
           %li= msg
-  .minimum-bid= minimum_bid(@auction)
-  //.user-goodles= goodles_to_spend(current_user)
   .bid-entry
     = f.label "How many Goodles do you want to bid?"
     = f.text_field :goodles

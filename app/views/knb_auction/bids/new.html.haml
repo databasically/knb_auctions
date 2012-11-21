@@ -1,4 +1,7 @@
 = render :partial => "knb_auction/application/auction_engine"
 
 %h1.title= "New bid for #{@auction.product_name.upcase}"
+
+%h4.minimum-bid= minimum_bid(@auction)
+%h4.user-goodles= "Your maximum bid is #{goodles_to_spend(current_user)} G"
 .bid-entry-form= render 'form'
