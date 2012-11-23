@@ -6,6 +6,7 @@
   = "Auction for #{@auction.product_name}"
   -# = link_to @auction.product_name, @auction.product
 .upper.left.product-image{style: "width: 150px; height:150px;"}
+  = image_tag @auction.product.assets.first.image.url
 .product-description=@auction.product_description
 .time-left
   = auction_time_left( @auction ) + " left to bid"

@@ -33,6 +33,10 @@ ul.auction-list {
   }
   
   td.product-image {
+    img{
+      width:75px;
+      height:75px;
+    }
     max-width:75px;
     padding:7px;
     position:static;
@@ -116,8 +120,15 @@ ul.auction-list {
   text-align:center;
 }
 
+.product-description {
+  text-align:center;
+}
+
 .product-image {
-//  background:#ccc;
+  img{
+    width:150px;
+    height:150px;
+  }
   position:absolute;
   margin: 50px;
 }
