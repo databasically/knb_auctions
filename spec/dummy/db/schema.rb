@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114211621) do
+ActiveRecord::Schema.define(:version => 20121123160037) do
 
   create_table "knb_auction_auctions", :force => true do |t|
     t.integer  "reserve",       :default => 0, :null => false
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(:version => 20121114211621) do
     t.integer  "supplier_id"
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.string   "sku"
+    t.string   "upc"
+    t.integer  "a_supplier_profile_id"
+    t.boolean  "approved"
+    t.integer  "products_assets"
+    t.integer  "assets"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "users", :force => true do |t|
