@@ -10,10 +10,11 @@ ul.auction-list {
   }
   
   li.auction {
+    vertical-align:text-top;
     position:relative;
     margin:10px;
   	padding:5px;
-  	height: 90px;
+    height: 130px;
   	background-color:none!important;
   	background: #bce6fc; /* Old browsers */
   	background: -moz-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* FF3.6+ */
@@ -28,6 +29,7 @@ ul.auction-list {
   }
   
   .auction-item {
+    margin-top:20px;
     clear:both;
     width:100%;
   }
@@ -37,37 +39,37 @@ ul.auction-list {
       width:75px;
       height:75px;
     }
-    max-width:75px;
     padding:7px;
-    position:static;
-    margin: 0px;
+    position:inherit;
+    vertical-align:middle;
   }
   
-  td.product-name {
+  td.product-info {
     width:60%;
     max-width:450px;
-    text-align:left;
+    height:100px;
     .name {
-      max-height:80px;
       overflow:hidden;
+      text-overflow: ellipsis
+    }
+    .description {
+      text-align:left;
+      font-size:1em;
+      overflow:hidden;
+      color: rgb(8, 33, 74);
+      text-overflow: ellipsis
     }
   }
   
   .high-bid-info {
     vertical-align:middle;
+    font: 1em "Comfort-Regular", cursive;
+    color:#5b9dbf;
+    text-align:center;
   }
 
   .high-bid {
-    text-align:center;
-    color:#5b9dbf;
     font: 2em "Comfort-Regular", cursive;
-  }
- 
-  .high-bidder {
-    text-align:center;
-    color:#5b9dbf;
-    font: 1em "Comfort-Regular", cursive;
-    overflow:hidden;
   }
   
   td.time-left {
@@ -114,23 +116,20 @@ ul.auction-list {
   color:#BE3009;
 }
 
-.product-name {
-  font-size:2em;
-  line-height:1.33;
+.product-info {
+  vertical-align:text-top;
   text-align:center;
-}
-
-.product-description {
-  text-align:center;
-}
-
-.product-image {
-  img{
-    width:150px;
-    height:150px;
+  .name {
+    font-size:2em;
+    line-height:1.33;
+    text-align:center;
+    vertical-align:text-top;
   }
-  position:absolute;
-  margin: 50px;
+  .description {
+    text-align:center;
+    margin:5px auto;
+    vertical-align:text-top;
+  }
 }
 
 .bid-button{
