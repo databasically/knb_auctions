@@ -16,7 +16,6 @@ module KnbAuction
     attr_accessible :product_id, :created_by_id, :end_at, :start_at, :reserve
     attr_accessor :duration, :status, :highest_bidder
 
-    validates_associated :bids
     validates_presence_of :product
     validates_presence_of :start_at
     validates_presence_of :end_at
@@ -32,18 +31,20 @@ module KnbAuction
       end
     end
     
-    def self.new_for_auction(options = {})
-      Auction.new(Auction.adjusted_parameters(options))
+    def self.new_for_auction(auction_params = {})
+      Auction.new(Auction.adjusted_parameters(auction_params))
     end
     
-    def self.update_attributes_for_auction(options = {})
-      Auction.update_attributes(Auction.adjusted_parameters(options))
+    def update_attributes_for_auction(auction_params = {})
+      self.update_attributes(Auction.adjusted_parameters(auction_params))
     end
     
-    def self.adjusted_parameters(options)
-      defaults = {end_at: duration_to_end_at(options), start_at: dateselect_parse(options)}
-      options.delete(:duration)
-      options.reverse_merge(defaults)
+    def self.adjusted_parameters(auction_params)
+      defaults = {end_at: duration_to_end_at(auction_params), start_at: dateselect_parse(auction_params)}
+      %w(duration start_at(1i) start_at(2i) start_at(3i) start_at(4i) start_at(5i)).each do |key|
+        auction_params.delete(key)
+      end
+      auction_params.reverse_merge(defaults)
     end
 
     def self.active
@@ -143,16 +144,16 @@ module KnbAuction
       end
     end
     
-    def self.duration_to_end_at(options = {})
-      dateselect_parse(options) + options[:duration].to_i.seconds
+    def self.duration_to_end_at(auction_params)
+      dateselect_parse(auction_params) + auction_params[:duration].to_i.seconds
     end
     
-    def self.dateselect_parse(options)
-      year  = options["start_at(1i)"].to_i
-      month = options["start_at(2i)"].to_i
-      day   = options["start_at(3i)"].to_i
-      hour  = options["start_at(4i)"].to_i
-      min   = options["start_at(5i)"].to_i
+    def self.dateselect_parse(auction_params)
+      year  = auction_params["start_at(1i)"].to_i
+      month = auction_params["start_at(2i)"].to_i
+      day   = auction_params["start_at(3i)"].to_i
+      hour  = auction_params["start_at(4i)"].to_i
+      min   = auction_params["start_at(5i)"].to_i
       DateTime.new(year, month, day, hour, min)
     end
   end

@@ -48,8 +48,8 @@ module KnbAuction
   
     # GET /auctions/1/edit
     def edit
-      @auction = Auction.find(params[:id])
       @product_dropdown = Product.approved
+      @auction = Auction.find(params[:id])
     end
   
     # POST /auctions
@@ -71,6 +71,7 @@ module KnbAuction
     # PUT /auctions/1
     # PUT /auctions/1.json
     def update
+      @product_dropdown = Product.approved
       @auction = Auction.find(params[:id])
   
       respond_to do |format|
