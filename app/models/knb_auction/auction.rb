@@ -12,7 +12,7 @@ module KnbAuction
     belongs_to :product
     has_many :bids
 
-    accepts_nested_attributes_for :bids
+    accepts_nested_attributes_for :bids, allow_destroy: true
     attr_accessible :product_id, :created_by_id, :end_at, :start_at, :reserve
     attr_accessor :duration, :status, :highest_bidder
 
