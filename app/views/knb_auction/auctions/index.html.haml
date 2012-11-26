@@ -1,7 +1,14 @@
 = render :partial => "knb_auction/application/auction_engine"
 
-%h1.title Auctions
-
+%h1.title= @title
+.filters.center
+  = link_to "All", :action => "index", :filter => "all"
+  \|
+  = link_to "Active", :action => "index", :filter => "active"
+  \|
+  = link_to "Closed", :action => "index", :filter => "closed"
+  \|
+  = link_to "Upcoming", :action => "index", :filter => "upcoming"
 
 =render :partial => 'auction', :collection => @auctions
 

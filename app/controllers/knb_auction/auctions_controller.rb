@@ -4,8 +4,17 @@ module KnbAuction
   class AuctionsController < ApplicationController
     # GET /auctions
     # GET /auctions.json
-    def index
-      @auctions = Auction.all.sort_by(&:end_at)
+    def index      
+      filter = params[:filter] || "none" 
+      
+      if Auction.respond_to?(filter)
+        @title = "#{filter.titleize} Auctions"
+        @auctions = Auction.try( filter ).sort_by(&:end_at)
+      else
+        @title = "Auctions"
+        @auctions = Auction.active.sort_by(&:end_at)
+      end
+      
   
       respond_to do |format|
         format.html # index.html.erb
