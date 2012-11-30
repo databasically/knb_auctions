@@ -2,6 +2,9 @@ require_dependency "knb_auction/application_controller"
 
 module KnbAuction
   class BidsController < ApplicationController
+    before_filter :authenticate_user!
+    
+    
     # GET /bids
     # GET /bids.json
     # def index
