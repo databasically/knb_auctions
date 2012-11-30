@@ -120,7 +120,7 @@ module KnbAuction
     end
     
     def empty_bid
-      temp_bid.new(temp_owner.new("None", 0), reserve.to_i, "None")
+      temp_bid.new(temp_owner.new("", 0), reserve.to_i, "")
     end
     
     def temp_bid
