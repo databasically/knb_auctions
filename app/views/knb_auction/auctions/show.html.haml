@@ -12,6 +12,6 @@
 %br
 .actions
   = link_to 'Go back to the Auctions list', auctions_path
-  - if current_user.admin?
+  - if current_user && current_user.admin?
     \|
     = link_to 'Edit this Auction', edit_auction_path(@auction)

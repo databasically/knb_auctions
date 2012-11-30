@@ -6,17 +6,21 @@
     -unless controller.controller_name == "home"
       .status-label.upper.left
         - status_label(auction.status) {auction.status.to_s.upcase}
-      - if current_user.admin?
+      - if current_user && current_user.admin?
         .admin-menu.upper.right
           %ul
             %li= link_to 'Edit', edit_auction_path(auction)
-            -# %li= link_to "Delete", auction_path, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
+            %li= button_to "Delete", auction, :method=>:delete, :class=>:destroy,:confirm=>"Are you sure?"
     %table.auction-item
       %tr
         %td.product-image{style: "width: 75px; height:75px;"}
           = image_tag auction.product.main_image(:thumb)
         %td.product-info
-          .name= link_to auction.product_name, auction_engine.auction_path(auction)
+          .name
+            -unless controller.controller_name == "home"
+              = link_to auction.product_name, auction_path(auction)
+            -else 
+              = auction.product_name
           .description= auction.product.description
         -if auction.active?
           %td.time-left
@@ -27,5 +31,5 @@
             ="high bid is"
             .high-bid= "#{auction.high_bid.goodles} G"
             .high-bidder= bid_owner_name( auction.high_bid )
-          -if auction.active? && current_user.child?
+          -if auction.active? && current_user && current_user.child?
             %td.bid-button= link_to 'Bid', new_auction_bid_path(auction)

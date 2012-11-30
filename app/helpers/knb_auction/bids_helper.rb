@@ -1,7 +1,7 @@
 module KnbAuction
   module BidsHelper
     def minimum_bid(auction)
-      minimum_bid_string = "The minimum bid is"
+      minimum_bid_string = "To bid on this item you must use at least"
       if auction.reserve > auction.high_bid.goodles
        "#{minimum_bid_string} #{auction.reserve} G"
       else
