@@ -1,14 +1,6 @@
 module KnbAuction
   module AuctionsHelper
     
-    def start_at_local_time( auction )
-      auction.start_at.localtime
-    end
-    
-    def end_at_local_time( auction )
-      auction.end_at.localtime
-    end
-    
     def status_label( status )
       haml_tag(:span, yield, class: "label #{status_labeler( status )}")
     end
@@ -39,7 +31,7 @@ module KnbAuction
           "You"
         end
       else
-        "Another goodler"
+        ""
       end
     end
     
