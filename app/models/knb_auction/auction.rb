@@ -14,7 +14,7 @@ module KnbAuction
 
     accepts_nested_attributes_for :bids, allow_destroy: true
     attr_accessible :product_id, :created_by_id, :end_at, :start_at, :reserve
-    attr_accessor :duration, :status, :highest_bidder
+    attr_accessor :status, :highest_bidder
 
     validates_presence_of :product
     validates_presence_of :start_at
@@ -27,7 +27,6 @@ module KnbAuction
     def initialize_working_variables
       if start_at && end_at
         @status = auction_state_by_datetime
-        # @start_at_localtime = start_at.localtime
       end
     end
     
@@ -76,6 +75,11 @@ module KnbAuction
     
     def self.bid_liability(user)
       find_by_highest_bidder(user).inject(0) { |goodles, auction|  goodles += auction.high_bid.goodles}
+    end
+    
+    def duration
+      return nil if end_at.nil? || start_at.nil?
+      end_at - start_at
     end
     
     def self.goodles_to_spend(user)
