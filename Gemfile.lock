@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    knb_auction (1.0.0.6)
+    knb_auction (1.0.0.7)
       haml-rails
       jquery-rails
       pg
