@@ -1,6 +1,5 @@
 = render :partial => "knb_auction/application/auction_engine"
 
-%h1.title= @title
 .filters.center
   = link_to "All", :action => "index", :filter => "all"
   \|
@@ -10,10 +9,12 @@
   \|
   = link_to "Upcoming", :action => "index", :filter => "upcoming"
 
-=render :partial => 'auction', :collection => @auctions
+.row-fluid
+  .span12
+    =render :partial => 'auction', :collection => @auctions
 
 
 - if current_user && current_user.admin?
   %br
   .actions
-    = link_to 'Create a new Auction', new_auction_path
+    = link_to 'create a new auction', new_auction_path

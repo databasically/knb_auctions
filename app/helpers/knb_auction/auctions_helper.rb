@@ -8,13 +8,13 @@ module KnbAuction
     def status_labeler( status )
       case status
       when :active
-        "label-success"
+        "label label-success"
       when :closed
-        "label-important"
+        "label label-important"
       when :upcoming
-        "label-warning"
+        "label label-warning"
       else
-        "label-info"
+        "label label-info"
       end
     end
     
@@ -34,6 +34,14 @@ module KnbAuction
     
     def auction_time_left( auction )
       distance_of_time_in_words_to_now(auction.end_at)
+    end
+    
+    def auction_product_name( auction )
+      unless controller.controller_name == "home"
+        link_to auction.product_name.upcase, auction_path(auction)
+      else 
+        auction.product_name.upcase
+      end
     end
     
   end

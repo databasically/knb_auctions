@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "haml-rails"
   s.add_dependency "jquery-rails"
   s.add_dependency "pg"
+  s.add_dependency "delayed_job_active_record"
   
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "thin"

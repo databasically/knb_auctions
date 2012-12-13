@@ -9,6 +9,10 @@ gemspec
 gem "jquery-rails"
 gem "haml-rails"
 gem "devise"
+gem "delayed_job_active_record"
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 
 
 

@@ -1,168 +1,176 @@
-AuctionPage {
-  position:relative;
-}
-
-ul.auction-list {
-  list-style-type: none;
-  
-  tr, td{
-    padding:0;
+//AuctionPage {
+//  position:relative;
+//}
+//
+//ul.auction-list {
+//  list-style-type: none;
+//  
+//  tr, td{
+//    padding:0;
+//  }
+//  
+  .auction {
+//    vertical-align:text-top;
+//    height: 130px;
+    background-color:none!important;
+    background: #bce6fc; /* Old browsers */
+    background: -moz-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bce6fc), color-stop(100%, #e8f0f6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #bce6fc 0%, #e8f0f6 100%); /* W3C */
+    border: 2px solid white;
+    border-radius: 15px;
+    overflow:hidden;
   }
-  
-  li.auction {
-    vertical-align:text-top;
-    position:relative;
-    margin:10px;
-  	padding:5px;
-    height: 130px;
-  	background-color:none!important;
-  	background: #bce6fc; /* Old browsers */
-  	background: -moz-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* FF3.6+ */
-  	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bce6fc), color-stop(100%, #e8f0f6)); /* Chrome,Safari4+ */
-  	background: -webkit-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* Chrome10+,Safari5.1+ */
-  	background: -o-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* Opera 11.10+ */
-  	background: -ms-linear-gradient(top, #bce6fc 0%, #e8f0f6 100%); /* IE10+ */
-  	background: linear-gradient(to bottom, #bce6fc 0%, #e8f0f6 100%); /* W3C */
-  	border: 2px solid white;
-  	border-radius: 15px;
-  	overflow:hidden;
-  }
-  
+//  
   .auction-item {
-    margin-top:20px;
-    clear:both;
-    width:100%;
+//      padding:5px;
+//    margin-top:20px;
+//    clear:both;
+//    width:100%;
   }
-  
-  td.product-image {
-    img{
-      width:75px;
-      height:75px;
-    }
-    padding:7px;
-    position:inherit;
-    vertical-align:middle;
-  }
-  
-  td.product-info {
-    width:60%;
-    max-width:450px;
-    height:100px;
-    .name {
-      overflow:hidden;
-      text-overflow: ellipsis
-    }
-    .description {
-      text-align:left;
-      font-size:1em;
-      overflow:hidden;
-      color: rgb(8, 33, 74);
-      text-overflow: ellipsis
-    }
-  }
-  
-  .high-bid-info {
-    vertical-align:middle;
-    font: 1em "Comfort-Regular", cursive;
-    color:#5b9dbf;
-    text-align:center;
-  }
-
-  .high-bid {
-    font: 2em "Comfort-Regular", cursive;
-  }
-  
-  td.time-left {
-    vertical-align:middle;
-    width: 135px;
-    .time-left-label {
-      font: .5em "Comfort-Regular", cursive;
-    }
-  }
-  
-  .admin-menu {
-    margin:0;
-    padding:0;
-    ul {
-      list-style-type: none;
-      display:inline-block;
-      margin:0;
-      padding:0;
-      li {
-        display:inline-block;
-        margin:0;
-        padding:0;
-        form {
-          display:inline-block;
-          margin:0;
-          padding:0;
-        }
-      }
-    }
-  }
-}
-
-.bid-table{
-  margin:10px auto;
-}
-
-.status-label {
-  margin-bottom:5px;
-}
-
-.time-left {
-  font: 2em "Comfort-Regular", cursive;
-  text-align:center;
-  color:#BE3009;
-}
-
-.product-image {
-  img {
-    border:3px solid #a0c7db;
-  }
-}
-
-.product-info {
-  vertical-align:text-top;
-  text-align:center;
-  .name {
-    font-size:2em;
-    line-height:1.33;
-    text-align:center;
-    vertical-align:text-top;
-  }
-  .description {
-    text-align:center;
-    margin:5px auto;
-    vertical-align:text-top;
-  }
-}
-
-.bid-button{
-  vertical-align:middle;
-  text-align:center;
-  a{
-    padding: 3px 5px;
-    border: 3px solid #fff;
-    background: #D5451C;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #D5451C), color-stop(14%, #F04E1F), color-stop(83%, #FDAF10), color-stop(100%, #FCE3AF));
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d5451c', endColorstr='#fce3af', GradientType=0 );
-    font: 1.5em Verdana, Geneva, sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    color: white!important;
-    border-radius: 14px;
-    -webkit-border-radius: 14px;
-    -moz-border-radius: 14px;
-    border-radius: 14px;
-    background: #fce3af; /* Old browsers */
-    background: -moz-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fce3af), color-stop(14%, #fdaf10), color-stop(87%, #f04e1f), color-stop(100%, #d5451c)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fce3af', endColorstr='#d5451c', GradientType=0 ); /* IE6-9 */
-  }
-}
+//  
+//  td.product-image {
+//    img{
+//      width:75px;
+//      height:75px;
+//    }
+//    padding:7px;
+//    position:inherit;
+//    vertical-align:middle;
+//  }
+//  
+//  td.product-info {
+//    width:60%;
+//    max-width:450px;
+//    height:100px;
+//    .name {
+//    }
+//    .description {
+//      text-align:left;
+//      overflow:hidden;
+//      color: #194388;
+//      text-overflow: ellipsis
+//    }
+//  }
+//  
+//  .high-bid-info {
+//    vertical-align:middle;
+//    font: "Comfort-Regular", sans-serif;
+//    font-size: 12pt;
+//    color:#5195b8;
+//    text-align:center;
+//  }
+//
+//  .high-bid {
+//    font: "Comfort-Bold", sans-serif;
+//    font-size: 18pt;
+//    line-height:1.33em;
+//  }
+//  
+//  td.time-left {
+//    vertical-align:middle;
+//    width: 135px;
+//    .time-left-label {
+//      font: "Comfort-Bold", sans-serif;
+//      font-size: 12pt;
+//    }
+//  }
+//  
+//  .admin-menu {
+//    margin:0;
+//    padding:0;
+//    ul {
+//      list-style-type: none;
+//      display:inline-block;
+//      margin:0;
+//      padding:0;
+//      li {
+//        display:inline-block;
+//        margin:0;
+//        padding:0;
+//        form {
+//          display:inline-block;
+//          margin:0;
+//          padding:0;
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//.bid-table{
+//  margin:10px auto;
+//}
+//
+//.status-label {
+//  margin-bottom:5px;
+//}
+//
+//.time-left {
+//  font: "Comfort-Bold", sans-serif;
+//  font-size: 18pt;
+//  text-align:center;
+//  color:#ea4c1e;
+//  line-height:1.25em;
+//}
+//
+//.product-image {
+//  img {
+//    border:3px solid #a0c7db;
+//  }
+//}
+//
+//.product-info {
+//  vertical-align:text-top;
+//  text-align:center;
+//  .name {
+//    font: "Comfort-Bold", sans-serif;
+//    font-size: 18pt;
+//    line-height:1.33;
+//    text-align:center;
+//    vertical-align:text-top;
+//    a {
+//      font: 18pt, "Comfort-Bold", sans-serif;
+//    }
+//  }
+//  .description {
+//    font: "Comfort-Regular", sans-serif;
+//    font-size: 10pt;
+//    color:#08214A;
+//    text-align:center;
+//    margin:5px auto;
+//    vertical-align:text-top;
+//  }
+//}
+//
+//.bid-button{
+//  vertical-align:middle;
+//  text-align:center;
+//  a{
+//    padding: 3px 5px;
+//    border: 3px solid #fff;
+//    background: #D5451C;
+//    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #D5451C), color-stop(14%, #F04E1F), color-stop(83%, #FDAF10), color-stop(100%, #FCE3AF));
+//    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d5451c', endColorstr='#fce3af', GradientType=0 );
+//    font: 1.5em Verdana, Geneva, sans-serif;
+//    font-weight: bold;
+//    text-transform: uppercase;
+//    text-align: center;
+//    color: white!important;
+//    border-radius: 14px;
+//    -webkit-border-radius: 14px;
+//    -moz-border-radius: 14px;
+//    border-radius: 14px;
+//    background: #fce3af; /* Old browsers */
+//    background: -moz-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* FF3.6+ */
+//    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fce3af), color-stop(14%, #fdaf10), color-stop(87%, #f04e1f), color-stop(100%, #d5451c)); /* Chrome,Safari4+ */
+//    background: -webkit-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* Chrome10+,Safari5.1+ */
+//    background: -o-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* Opera 11.10+ */
+//    background: -ms-linear-gradient(top, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* IE10+ */
+//    background: linear-gradient(to bottom, #fce3af 0%, #fdaf10 14%, #f04e1f 87%, #d5451c 100%); /* W3C */
+//    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fce3af', endColorstr='#d5451c', GradientType=0 ); /* IE6-9 */
+//  }
+//}
