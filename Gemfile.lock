@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    knb_auction (1.0.0.7)
+    knb_auction (1.0.0.8)
       delayed_job_active_record
       haml-rails
       jquery-rails
