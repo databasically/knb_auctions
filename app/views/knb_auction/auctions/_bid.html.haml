@@ -20,7 +20,7 @@
             .bid-item
               %tr.row
                 %td= bid_owner_name( bid )
-                %td= bid.bid_at.localtime.strftime("%m/%d/%y %I:%M:%S %p %Z")
+                %td= distance_of_time_in_words_to_now(bid.bid_at)
                 %td= bid.goodles
                 - if current_user.admin?
                   %td= link_to "Delete", auction_engine.auction_bid_path(@auction, bid), {:method=>:delete,  :class=>"destroy btn btn-danger btn-mini", :confirm=>"Are you sure?"}

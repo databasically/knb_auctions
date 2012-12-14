@@ -1,14 +1,14 @@
-= form_for(@bid, :url => auction_bids_path(@auction)) do |f|
-  - if @bid.errors.any?
-    #error_explanation
-      %h2= "Your bid couldn't be sumbitted:"
-      %ul
-        - @bid.errors.full_messages.each do |msg|
-          %li= msg
+- if @bid.errors.any?
+  #error_explanation
+    %h2= "Your bid couldn't be sumbitted:"
+    %ul
+      - @bid.errors.full_messages.each do |msg|
+        %li= msg
+= simple_form_for(@bid, :url => auction_bids_path(@auction)) do |f|
   .bid-entry
     = f.label "How many Goodles do you want to bid?"
     = f.text_field :goodles
-  .actions
-    = f.submit 'Submit Bid'
+  .actions.center
+    =f.button :submit, "Submit Bid", :class => 'btn btn-success', :wrapper_html => { :class => "span3" }
     \|
     = link_to 'Cancel Bid', auction_path(@auction)

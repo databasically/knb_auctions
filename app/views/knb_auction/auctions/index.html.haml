@@ -1,6 +1,12 @@
 = render :partial => "knb_auction/application/auction_engine"
+= render :partial => "bid_modal"
 
-.center
+-content_for :header do
+  .offset3
+    .span8
+      = image_tag "knb_auction/kids-klout-banner.png"
+
+%h4.center
   = link_to "All", :action => "index", :filter => "all"
   \|
   = link_to "Active", :action => "index", :filter => "active"
@@ -8,7 +14,7 @@
   = link_to "Closed", :action => "index", :filter => "closed"
   \|
   = link_to "Upcoming", :action => "index", :filter => "upcoming"
-
+%br
 .row-fluid
   .span12
     =render :partial => 'auction', :collection => @auctions

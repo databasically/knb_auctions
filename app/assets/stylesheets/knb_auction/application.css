@@ -12,3 +12,25 @@
  *= require_self
  *= require_tree .
  */
+ 
+ @font-face {
+    font-family: 'Comfort-Regular';
+    src: asset-url('fonts/knb_auction/Comfortaa-Regular.ttf', font);
+ }
+ @font-face {
+    font-family: 'Comfort-Light';
+    src: asset-url('fonts/knb_auction/Comfortaa-Light.ttf', font);
+ }
+ @font-face {
+    font-family: 'Comfort-Bold';
+    src: asset-url('fonts/knb_auction/Comfortaa-Bold.ttf', font);
+ }
+
+ @font-face {
+    font-family: 'Alber-Bold';
+    src: asset-url('fonts/knb_auction/Alber-Bold.otf', font);
+ }
+ 
+ body {
+   font-family: "Comfort-Regular", sans-serif;
+ }

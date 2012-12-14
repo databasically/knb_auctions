@@ -1,6 +1,13 @@
-%br
-.actions.center
-  = link_to 'go back to the auctions list', auctions_path
+= render :partial => "knb_auction/application/auction_engine"
+
+
+-content_for :header do
+  .offset3
+    .span8
+      = image_tag "knb_auction/kids-klout-banner.png"
+
+%h4.actions.center
+  = link_to "go back to the auctions list", auctions_path
   - if current_user && current_user.admin?
     \|
     = link_to 'edit this auction', edit_auction_path(@auction)
@@ -8,14 +15,12 @@
 .upper.left= link_to "", auctions_path, :class => "backBtn"
 %br
 
-= render :partial => "knb_auction/application/auction_engine"
-
 =render :partial => "auction", locals: {auction: @auction}
 
 =render :partial => "bid"
 
 %br
-.actions.center
+%h4.actions.center
   = link_to 'go back to the auctions list', auctions_path
   - if current_user && current_user.admin?
     \|
