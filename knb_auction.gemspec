@@ -14,13 +14,16 @@ Gem::Specification.new do |s|
   s.description = "KNB-Auctions is the Auction engine for KidsNBids.com. This engine handles product administration, auction administration, auction viewing, auction bidding, "
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.2"
   s.add_dependency "haml-rails"
   s.add_dependency "jquery-rails"
   s.add_dependency "pg"
   s.add_dependency "delayed_job_active_record"
+  s.add_dependency "therubyracer"
+  s.add_dependency "less-rails"
+  s.add_dependency "twitter-bootstrap-rails"
   
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "thin"
