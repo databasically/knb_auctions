@@ -1,12 +1,15 @@
 PATH
   remote: .
   specs:
-    knb_auction (1.0.0.8)
+    knb_auction (1.0.0.9)
       delayed_job_active_record
       haml-rails
       jquery-rails
+      less-rails
       pg
       rails (~> 3.2)
+      therubyracer
+      twitter-bootstrap-rails
 
 GEM
   remote: http://rubygems.org/
