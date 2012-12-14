@@ -14,19 +14,51 @@ module KnbAuction
 
     accepts_nested_attributes_for :bids, allow_destroy: true
     attr_accessible :product_id, :created_by_id, :end_at, :start_at, :reserve
-    attr_accessor :status, :highest_bidder
+    attr_accessor :status, :highest_bidder, :duration
 
     validates_presence_of :product
     validates_presence_of :start_at
     validates_presence_of :end_at
     
-    DURATION_WHITELIST = [['1 Day', 1.day.to_i], ['1 Week', 1.week.to_i], ['2 Weeks', 2.weeks.to_i], ['3 Weeks', 3.weeks.to_i], ['1 Month', 1.month.to_i]]
-    
     after_initialize :initialize_working_variables
+    after_save :enqueue_auction_close
+    
+    DURATION_WHITELIST = [['1 Day', 1.day.to_i], ['1 Week', 1.week.to_i], ['2 Weeks', 2.weeks.to_i], ['3 Weeks', 3.weeks.to_i], ['1 Month', 1.month.to_i]]
+        
+    
+    
+    def enqueue_auction_close
+      # self.delay(:run_at => end_at, :queue => 'auction').close_auction
+      delay(:run_at => 30.seconds.from_now, :queue => 'auction').close_auction
+    end
+    
+    def close_auction
+      # return unless auction_current
+      delay.deduct_goodles
+      delay.send_guardian_email(:run_at => 1.minute.from_now)
+      delay.send_admin_email(:run_at => 1.minute.from_now)
+    end
+    
+    def auction_current
+      updated_at == Auction.find(:id).updated_at
+    end
+    
+    def deduct_goodles
+      "Did it!"
+    end
+    
+    def send_guardian_email
+      "Hello!"
+    end
+    
+    def send_admin_email
+      "Hello!"
+    end
     
     def initialize_working_variables
       if start_at && end_at
         @status = auction_state_by_datetime
+        @duration = (end_at - start_at).to_i
       end
     end
     

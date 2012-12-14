@@ -48,16 +48,6 @@ $orange1: #BE3009;
    src: asset-url('fonts/Alber-Bold.otf', font);
 }
 
-@font-face {
-   font-family: 'Lemonade-Regular';
-   src: asset-url('fonts/Lemonade.ttf', font);
-}
-
-@font-face {
-   font-family: 'Lemonade-Bold';
-   src: asset-url('fonts/LemonadeBold.ttf', font);
-}
-
 body{
  font: 100%/1.4 'Comfort-Regular', cursive;
 }
@@ -128,7 +118,7 @@ p {
   clear:both;
   .links {
     a {
-      padding:15px 10px!important;
+      padding:15px 20px!important;
     }
     font-family: 'Comfort-Bold', sans-serif;
     font-size: 18pt;

@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
   def child?
     true
   end
+  
+  def goodles
+    100000
+  end
+  
+  def full_name
+    "Johnny Smith"
+  end
 end

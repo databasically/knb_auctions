@@ -1,36 +1,54 @@
-!!!
-
-%html
+!!! 5
+%html(lang="en")
   %head
-    %title Kids-N-Bids -- Want some Goodles?
-    = stylesheet_link_tag    "application", :media => "all"
-    = stylesheet_link_tag    "http://www.kidsnbids.com/assets/application.css"
-    = javascript_include_tag "application"
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "Kids-N-Bids"
     = csrf_meta_tags
-    = yield(:head)
-  %body
-    .container.row
-    %header
-      %figure= link_to image_tag('http://www.kidsnbids.com/assets/logo-98d83606d2744ce639802125fe311e8a.png', width: '267', height: '200', alt: 'Kids N Bids', title: 'Home'), main_app.root_path
-      -# .navWrap
-      -#   .nav
-      -#     = render_navigation(:level => 1)
-      %p#notice.notice{ style: "#{"display:none" if notice.blank?}" }= notice
-      %p#alert.alert{   style: "#{"display:none" if alert.blank?}" }= alert
-    .wrap
-      %article
-        %div{class: "content row #{@contentRowSubclass}"}
-          = yield
-      = yield(:below_content)
-  %footer
-    %p
-      Kids N Bids &copy; 2012
-      &bull;
-      =link_to "Contact Us", "/contact"
-      &bull;
-      = link_to "Support", "/faq"
-      &bull;
-      = link_to "lPrivacy &amp; Terms", "/terms"
-      </p>
-  -# <%= render 'common/learning_buddy' %>
-  -# <%= render 'common/google_analytics' %>
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
+    =favicon_link_tag(source='/favicon.ico')
+    
+    =yield(:head)
+
+
+  %body{id: "#{controller.controller_name}-#{controller.action_name}"}
+    .header
+      .container
+        .row
+          .hidden-phone
+            .offset2.span7
+              = yield(:header)
+          -# =render :partial => "layouts/authentication"
+      
+    =render :partial => "layouts/navbar"
+
+    .collar
+      =yield(:collar)
+
+    .container
+      .row-fluid
+        .span12
+          .flash
+            = bootstrap_flash
+          .main-container
+            = yield
+                
+            = yield(:animation)
+      .footer=render :partial => "layouts/footer"
+
+    = yield(:modal)
+      
+    
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "application"

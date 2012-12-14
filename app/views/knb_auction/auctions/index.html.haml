@@ -1,6 +1,6 @@
 = render :partial => "knb_auction/application/auction_engine"
 
-.filters.center
+.center
   = link_to "All", :action => "index", :filter => "all"
   \|
   = link_to "Active", :action => "index", :filter => "active"
@@ -16,5 +16,6 @@
 
 - if current_user && current_user.admin?
   %br
-  .actions
-    = link_to 'create a new auction', new_auction_path
+  .row-fluid
+    .offset4.span4
+      = button_to('create a new auction', new_auction_path, class: "btn btn-warning btn-large btn-span")

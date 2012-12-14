@@ -1,0 +1,30 @@
+-content_for :head do
+  = stylesheet_link_tag 'knb_auction/application'
+
+.auction
+  - if current_user && current_user.admin?
+    .pull-right= button_to "delete", auction, :method=>:delete, :confirm=>"Are you sure?", class: "btn btn-danger btn-mini"
+    .pull-right= button_to 'edit', auction_engine.edit_auction_path(auction), class: "btn btn-info btn-mini"
+  - status_label(auction.status) {auction.status.to_s.upcase}
+  .auction-item
+    .span1
+      .product-image= image_tag auction.product.main_image(:thumb)
+    .span5
+      .product-info
+        .name
+          = auction_product_name( auction )
+        .description= auction.product.description
+    -if auction.active?
+      .span2
+        .time-left
+          = auction_time_left( auction )
+          .time-left-label="left to bid"
+    .span2
+      .high-bid-info
+        ="high bid is"
+        .high-bid= "#{auction.high_bid.goodles} G"
+        .high-bidder= bid_owner_name( auction.high_bid )
+  -if auction.active? && current_user && (current_user.child? || current_user.admin?)
+    .span2
+      .bid-button= button_to 'Bid', auction_engine.new_auction_bid_path(auction), method: :get
+%br

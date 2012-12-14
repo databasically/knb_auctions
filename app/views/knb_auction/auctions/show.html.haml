@@ -1,6 +1,11 @@
+%br
+.actions.center
+  = link_to 'go back to the auctions list', auctions_path
+  - if current_user && current_user.admin?
+    \|
+    = link_to 'edit this auction', edit_auction_path(@auction)
+
 .upper.left= link_to "", auctions_path, :class => "backBtn"
-%br
-%br
 %br
 
 = render :partial => "knb_auction/application/auction_engine"
@@ -10,8 +15,8 @@
 =render :partial => "bid"
 
 %br
-.actions
-  = link_to 'Go back to the Auctions list', auctions_path
+.actions.center
+  = link_to 'go back to the auctions list', auctions_path
   - if current_user && current_user.admin?
     \|
-    = link_to 'Edit this Auction', edit_auction_path(@auction)
+    = link_to 'edit this auction', edit_auction_path(@auction)

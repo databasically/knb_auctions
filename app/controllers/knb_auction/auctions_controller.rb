@@ -51,7 +51,7 @@ module KnbAuction
     # GET /auctions/1/edit
     def edit
       @product_dropdown = Product.approved
-      @auction = Auction.find(params[:id])
+      @auction = Auction.find(params[:id])      
     end
   
     # POST /auctions
