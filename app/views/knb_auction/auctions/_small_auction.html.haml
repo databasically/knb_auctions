@@ -5,13 +5,13 @@
   .auction-item
     .span2
       .product-image.center= image_tag auction.product.main_image(:thumb)
-    .span8
+    .span7
       .product-info
         .name
           = auction_product_name( auction )
         .description= auction.product.description
     -if auction.active?
-      .span2
+      .span3
         .time-left
           = auction_time_left( auction )
           .time-left-label="left to bid"

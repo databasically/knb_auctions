@@ -29,8 +29,26 @@ $gray3: #CCCCCC;
 $gray4: #504e4e;
 $orange1: #BE3009;
 
-body{
- font: 100%/1.4 'Comfort-Regular', cursive;
+@font-face {
+   font-family: 'Comfort-Regular';
+   src: asset-url('fonts/Comfortaa-Regular.ttf', font);
+}
+@font-face {
+   font-family: 'Comfort-Light';
+   src: asset-url('fonts/Comfortaa-Light.ttf', font);
+}
+@font-face {
+   font-family: 'Comfort-Bold';
+   src: asset-url('fonts/Comfortaa-Bold.ttf', font);
+}
+
+@font-face {
+   font-family: 'Alber-Bold';
+   src: asset-url('fonts/Alber-Bold.otf', font);
+}
+
+body, h1, h2, h3, h4, h5, h6, a, p {
+ font-family: 'Comfort-Regular', cursive;
 }
 
 h1 {
