@@ -8,7 +8,7 @@
     .span7
       .product-info
         .name
-          = auction_product_name( auction )
+          = auction.product_name.upcase
         .description= auction.product.description
     -if auction.active?
       .span3

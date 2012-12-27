@@ -37,11 +37,7 @@ module KnbAuction
     end
     
     def auction_product_name( auction )
-      unless controller.controller_name == "home"
-        link_to auction.product_name.upcase, auction_path(auction)
-      else 
-        auction.product_name.upcase
-      end
+      link_to auction.product_name.upcase, auction
     end
     
   end
