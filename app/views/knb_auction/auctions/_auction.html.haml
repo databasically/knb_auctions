@@ -5,7 +5,8 @@
   - status_label(auction.status) {auction.status.to_s.upcase}
   .auction-item
     .span1
-      .product-image= image_tag auction.product.main_image(:thumb)
+      -if auction.product.main_image(:thumb)
+        .product-image= image_tag auction.product.main_image(:thumb)
     .span5
       .product-info
         .name
