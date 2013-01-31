@@ -4,9 +4,9 @@
     .pull-right= button_to 'edit', auction_engine.edit_auction_path(auction), class: "btn btn-info btn-mini"
   - status_label(auction.status) {auction.status.to_s.upcase}
   .auction-item
-    .span1
-      -if auction.product.main_image(:thumb)
-        .product-image= image_tag auction.product.main_image(:thumb)
+    .span1.product-image
+      - if auction.product.respond_to?(:main_image)
+        = image_tag auction.product.main_image(:thumb)
     .span5
       .product-info
         .name

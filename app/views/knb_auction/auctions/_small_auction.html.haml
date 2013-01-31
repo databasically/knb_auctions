@@ -3,9 +3,10 @@
 
 .auction.auction-small
   .auction-item
-    .span2
-      .product-image.center= image_tag auction.product.main_image(:thumb)
-    .span7
+    .offset1.span2.product-image
+      - if auction.product.respond_to?(:main_image)
+        .center= image_tag auction.product.main_image(:thumb)
+    .span6
       .product-info
         .name
           = auction.product_name.upcase
