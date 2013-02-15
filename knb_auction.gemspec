@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["chad@databasically.com"]
   s.homepage    = "http://databasically.com"
   s.summary     = "Auction functionality of KidsNBids.com"
-  s.description = "KNB-Auctions is the Auction engine for KidsNBids.com. This engine handles product administration, auction administration, auction viewing, auction bidding, "
+  s.description = "KNB-Auctions is the Auction engine for KidsNBids.com. This engine handles auction administration, auction viewing, and auction bidding"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
@@ -26,5 +26,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "thin"
   s.add_development_dependency "guard-rspec"
+  s.add_development_dependency 'ruby_gntp'
+  s.add_development_dependency 'rb-fsevent', '~> 0.9.1'
 
 end
