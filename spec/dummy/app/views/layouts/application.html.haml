@@ -10,39 +10,49 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
-    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
-    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
-    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-    =favicon_link_tag(source='/favicon.ico')
+    -# %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
+    -# %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
+    -# %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
+    %link(href="/favicon.ico" rel="apple-touch-icon-precomposed")
+    =favicon_link_tag
     
     =yield(:head)
+    = render :partial => "google_analytics" if Rails.env.production?
 
 
-  %body{id: "#{controller.controller_name}-#{controller.action_name}"}
+  %body{id: "#{controller.controller_name}Page"}
     .header
       .container
-        .row
+        .row-fluid
           .hidden-phone
-            .offset2.span7
-              = yield(:header)
-          -# =render :partial => "layouts/authentication"
-      
-    =render :partial => "layouts/navbar"
+            = yield(:header)
+          .pull-right
+            .authenticate
+              JOIN NOW. GET GOODLES!
+              %br
+    
+    .navigation  
+      =render :partial => "navbar"
 
     .collar
       =yield(:collar)
 
-    .container
-      .row-fluid
-        .span12
-          .flash
-            = bootstrap_flash
-          .main-container
-            = yield
-                
-            = yield(:animation)
-      .footer=render :partial => "layouts/footer"
+    #container-background
+      .container
+        .row-fluid
+          .span12
+            .outer-container
+              .row-fluid
+                .span12
+                  .flash
+                    = bootstrap_flash
+                  .main-container
+                    = yield
+              
+                    = yield(:animation)
+              .row-fluid
+                .span12
+                  .footer=render :partial => "footer"
 
     = yield(:modal)
       
@@ -52,3 +62,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
+    = yield(:after_javascripts)
