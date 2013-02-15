@@ -10,10 +10,11 @@ module KnbAuction
     belongs_to :owner, :class_name => "User"
     belongs_to :auction
     
-    attr_accessible :goodles, :bid_at, :owner_id, :auction_id
+    attr_accessible :goodles, :bid_at, :owner_id, :auction_id, :auction
     
-    validates_presence_of :auction_id
+    validates_presence_of :auction
     validates_presence_of :bid_at
+    validates_numericality_of :goodles
     
     validate :auction_open
     validate :reserve_met
@@ -31,19 +32,19 @@ module KnbAuction
     end
     
     def high_bid
-      if auction.high_bid.goodles >= goodles
+      if !goodles.nil? && auction.high_bid_goodles >= goodles
         errors.add(:goodles, "must be more than the current high bid of #{auction.high_bid.goodles} goodles")
       end
     end
     
     def bankroll
-      if Auction.goodles_to_spend(owner) < goodles
+      if !goodles.nil? &&  Auction.goodles_to_spend(owner) < goodles
         errors.add(:goodles, "must be less than your maximum bid of #{Auction.goodles_to_spend(owner)}")
       end
     end
     
     def reserve_met
-      if auction.reserve > goodles
+      if !goodles.nil? && auction.reserve > goodles
         errors.add(:goodles, "must be greater than the reserve price of #{auction.reserve} goodles")
       end
     end
