@@ -24,8 +24,10 @@ module KnbAuction
     after_save :enqueue_auction_close
     
     DURATION_WHITELIST = [['1 Day', 1.day.to_i], ['1 Week', 1.week.to_i], ['2 Weeks', 2.weeks.to_i], ['3 Weeks', 3.weeks.to_i], ['1 Month', 1.month.to_i]]
-        
     
+    # def set_auction
+    #   self.auction = Blorgh.auction_class.constantize.find_or_create_by(id: author_id)
+    # end
     
     def enqueue_auction_close
       # self.delay(:run_at => end_at, :queue => 'auction').close_auction
