@@ -1,3 +1,6 @@
+-content_for :after_javascripts do
+  = javascript_include_tag 'knb_auction/application'
+
 = form_for @auction do |f|
   - if @auction.errors.any?
     #error_explanation
@@ -6,9 +9,11 @@
         - @auction.errors.full_messages.each do |msg|
           %li= msg
           
-  .start-at
+  .start-at.input-append#datetimepicker
     = f.label :start_at
-    = f.datetime_select :start_at
+    = f.text_field :start_at, "data-format" => "yyyy/MM/dd HH:mm:ss"
+    %span.add-on>
+      %i{data: {"date-icon" => 'icon-calendar', "time-icon" => 'icon-time'}}
   .duration
     = f.label :duration
     = f.select(:duration, KnbAuction::Auction::DURATION_WHITELIST)

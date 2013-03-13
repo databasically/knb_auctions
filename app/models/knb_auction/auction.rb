@@ -9,14 +9,14 @@
 
 module KnbAuction
   class Auction < ActiveRecord::Base
+    attr_accessible :product_id, :product, :created_by_id, :end_at, :start_at, :reserve, :winner_notified_at
+    attr_accessor :status, :highest_bidder, :duration
+    
     belongs_to :product
     has_many :bids
-
     accepts_nested_attributes_for :bids, allow_destroy: true
-    attr_accessible :product_id, :created_by_id, :end_at, :start_at, :reserve
-    attr_accessor :status, :highest_bidder, :duration
-
-    validates_presence_of :product
+    
+    validates_presence_of :product_id
     validates_presence_of :start_at
     validates_presence_of :end_at
     
@@ -24,10 +24,9 @@ module KnbAuction
     after_save :enqueue_auction_close
     
     DURATION_WHITELIST = [['1 Day', 1.day.to_i], ['1 Week', 1.week.to_i], ['2 Weeks', 2.weeks.to_i], ['3 Weeks', 3.weeks.to_i], ['1 Month', 1.month.to_i]]
+    TempBid = Struct.new(:owner, :goodles, :owner_name)
+    TempOwner = Struct.new(:full_name, :goodles)
     
-    # def set_auction
-    #   self.auction = Blorgh.auction_class.constantize.find_or_create_by(id: author_id)
-    # end
     
     def enqueue_auction_close
       # self.delay(:run_at => end_at, :queue => 'auction').close_auction
@@ -73,10 +72,9 @@ module KnbAuction
     end
     
     def self.adjusted_parameters(auction_params)
-      defaults = {end_at: duration_to_end_at(auction_params), start_at: dateselect_parse(auction_params)}
-      %w(duration start_at(1i) start_at(2i) start_at(3i) start_at(4i) start_at(5i)).each do |key|
-        auction_params.delete(key)
-      end
+      defaults = {end_at: duration_to_end_at(auction_params)}
+      auction_params.delete(:duration)
+
       auction_params.reverse_merge(defaults)
     end
 
@@ -153,16 +151,20 @@ module KnbAuction
       @high_bid ||= (bids.sort_by(&:goodles).last || empty_bid)
     end
     
+    def high_bid_goodles
+      high_bid.goodles
+    end
+    
     def empty_bid
-      temp_bid.new(temp_owner.new("", 0), reserve.to_i, "")
+      temp_bid
     end
     
     def temp_bid
-      @temp_bid ||= Struct.new("TempBid", :owner, :goodles, :owner_name)
+      TempBid.new(temp_owner, reserve.to_i, "")
     end
     
     def temp_owner
-      @temp_owner ||= Struct.new("TempOwner", :full_name, :goodles)
+      TempOwner.new("", 0)
     end
     
     def high_bidder
@@ -183,16 +185,7 @@ module KnbAuction
     end
     
     def self.duration_to_end_at(auction_params)
-      dateselect_parse(auction_params) + auction_params[:duration].to_i.seconds
-    end
-    
-    def self.dateselect_parse(auction_params)
-      year  = auction_params["start_at(1i)"].to_i
-      month = auction_params["start_at(2i)"].to_i
-      day   = auction_params["start_at(3i)"].to_i
-      hour  = auction_params["start_at(4i)"].to_i
-      min   = auction_params["start_at(5i)"].to_i
-      DateTime.new(year, month, day, hour, min)
+      DateTime.parse(auction_params[:start_at]) + auction_params[:duration].to_i.seconds
     end
   end
 end

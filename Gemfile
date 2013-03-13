@@ -13,7 +13,7 @@ gem "delayed_job_active_record"
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
-
+gem 'bootstrap-datetimepicker-rails'
 
 
 # Declare any dependencies that are still in development here instead of in
