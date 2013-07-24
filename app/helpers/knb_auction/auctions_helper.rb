@@ -19,13 +19,13 @@ module KnbAuction
     end
     
     def bid_owner_name( bid )
-      return "" unless current_user
+      return "" unless @active_child
       return bid.owner_name if current_user.admin?
-      return "" unless current_user == bid.owner
+      return "" unless @active_child == bid.owner
       
-      if current_user == bid.auction.high_bidder && bid.goodles == bid.auction.high_bid.goodles && bid.auction.active? 
+      if @active_child == bid.auction.high_bidder && bid.goodles == bid.auction.high_bid.goodles && bid.auction.active? 
         "You're winning!"
-      elsif current_user == bid.auction.high_bidder && bid.goodles == bid.auction.high_bid.goodles && bid.auction.closed?
+      elsif @active_child == bid.auction.high_bidder && bid.goodles == bid.auction.high_bid.goodles && bid.auction.closed?
         "You won!"
       else
         "You"

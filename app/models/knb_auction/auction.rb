@@ -105,8 +105,8 @@ module KnbAuction
       start_at > now
     end
     
-    def self.bid_liability(user)
-      find_by_highest_bidder(user).inject(0) { |goodles, auction|  goodles += auction.high_bid.goodles}
+    def self.bid_liability(child)
+      find_by_highest_bidder(child).inject(0) { |goodles, auction|  goodles += auction.high_bid.goodles}
     end
     
     def duration
@@ -114,16 +114,16 @@ module KnbAuction
       end_at - start_at
     end
     
-    def self.goodles_to_spend(user)
-      return 0 unless user.goodles
-      goodles_liquid = user.goodles - Auction.bid_liability(user)
+    def self.goodles_to_spend(child)
+      return 0 unless child.goodles
+      goodles_liquid = child.goodles - Auction.bid_liability(child)
       return 0 if goodles_liquid <= 0
       goodles_liquid.to_i
     end
     
-    def self.find_by_highest_bidder(user)
+    def self.find_by_highest_bidder(child)
       self.all.select do |auction|
-        if auction.high_bidder == user
+        if auction.high_bidder == child
           auction
         else
           next

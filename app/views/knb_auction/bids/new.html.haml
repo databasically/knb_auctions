@@ -5,5 +5,5 @@
 %h4.center
   = minimum_bid(@auction)
   %br
-  = "You can spend #{goodles_to_spend(current_user)} G"
+  = "You can spend #{goodles_to_spend(@active_child)} G"
 .bid-entry-form= render 'form'

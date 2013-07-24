@@ -7,7 +7,7 @@
 
 module KnbAuction
   class Bid < ActiveRecord::Base
-    belongs_to :owner, :class_name => "User"
+    belongs_to :owner, :class_name => "Child"
     belongs_to :auction
     
     attr_accessible :goodles, :bid_at, :owner_id, :auction_id, :auction
@@ -28,7 +28,7 @@ module KnbAuction
     end
     
     def owner_name
-      owner.full_name
+      owner.name
     end
     
     def high_bid
