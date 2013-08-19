@@ -11,10 +11,10 @@ module KnbAuction
       
       if Auction.respond_to?(filter)
         @title = "#{filter.titleize} Auctions"
-        @auctions = Auction.try( filter ).sort_by(&:end_at)
+        @auctions = Auction.try( filter ).sort_by(&:end_at).paginate( page: params[:page], :per_page => 15)
       else
         @title = "Auctions"
-        @auctions = Auction.active.sort_by(&:end_at)
+        @auctions = Auction.active.sort_by(&:end_at).paginate( page: params[:page], :per_page => 15)
       end
       
   

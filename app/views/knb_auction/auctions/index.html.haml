@@ -17,7 +17,10 @@
 %br
 .row-fluid
   .span12
-    =render :partial => 'auction', :collection => @auctions
+    = render @auctions
+.row-fluid
+  .span12
+    = will_paginate @auctions, renderer: BootstrapPagination::Rails
 
 
 - if current_user && current_user.admin?
