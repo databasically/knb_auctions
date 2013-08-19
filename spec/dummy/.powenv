@@ -1,0 +1,12 @@
+export PATH ; PATH="/Users/cdm/.rvm/gems/ruby-2.0.0-p247@knb-auctions/bin:/Users/cdm/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/cdm/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/cdm/.rvm/bin:$PATH"
+export rvm_env_string ; rvm_env_string='ruby-2.0.0-p247@knb-auctions'
+export rvm_path ; rvm_path='/Users/cdm/.rvm'
+export rvm_ruby_string ; rvm_ruby_string='ruby-2.0.0-p247'
+export rvm_gemset_name ; rvm_gemset_name='knb-auctions'
+export RUBY_VERSION ; RUBY_VERSION='ruby-2.0.0-p247'
+export GEM_HOME ; GEM_HOME='/Users/cdm/.rvm/gems/ruby-2.0.0-p247@knb-auctions'
+export GEM_PATH ; GEM_PATH='/Users/cdm/.rvm/gems/ruby-2.0.0-p247@knb-auctions:/Users/cdm/.rvm/gems/ruby-2.0.0-p247@global'
+export MY_RUBY_HOME ; MY_RUBY_HOME='/Users/cdm/.rvm/rubies/ruby-2.0.0-p247'
+export IRBRC ; IRBRC='/Users/cdm/.rvm/rubies/ruby-2.0.0-p247/.irbrc'
+unset MAGLEV_HOME
+unset RBXOPT
