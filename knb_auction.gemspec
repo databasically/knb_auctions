@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "twitter-bootstrap-rails"
   s.add_dependency 'bootstrap-datetimepicker-rails'
   s.add_dependency 'will_paginate', '~> 3.0'
+  s.add_dependency 'will_paginate-bootstrap'
   
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "thin"
