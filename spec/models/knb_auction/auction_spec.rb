@@ -2,14 +2,14 @@ require 'spec_helper'
 
 module KnbAuction
   describe Auction do
-    let(:product) { Product.new(name: "A generic Toy") }
+    let(:product) { Product.find_or_create_by_name("A generic Toy") }
     context "filter by" do  
       subject {Auction}
           
       before(:each) do
-        2.times {Auction.new(start_at: 1.months.ago, end_at: 1.month.from_now, product: product).save}
-        2.times {Auction.new(start_at: 2.months.ago, end_at: 7.day.ago, product: product).save}
-        2.times {Auction.new(start_at: 7.day.from_now, end_at: 2.month.from_now, product: product).save}
+        2.times {Auction.create(start_at: 1.months.ago, end_at: 1.month.from_now, product: product)}
+        2.times {Auction.create(start_at: 2.months.ago, end_at: 7.day.ago, product: product)}
+        2.times {Auction.create(start_at: 7.day.from_now, end_at: 2.month.from_now, product: product)}
       end
 
       its(:all) {should have(6).auctions}  
@@ -31,8 +31,6 @@ module KnbAuction
     #     
     #   end
     # end
-    
-    
     
   end
 end
