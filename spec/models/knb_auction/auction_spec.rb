@@ -29,7 +29,7 @@ module KnbAuction
         expect(child.goodles).to eql(2000)
         Timecop.travel(2.weeks.from_now)
         DelayedJobSpecHelper.work_off
-        child = Child.find_by_full_name("Yukon Cornelious")
+        child.reload
         expect(child.goodles).to eql(1800)
       end
     end
