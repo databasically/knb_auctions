@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 module KnbAuction
+  require 'timecop'
+  
   describe Auction do
     let(:product) { Product.find_or_create_by_name("A generic Toy") }
     context "filter by" do  
@@ -18,8 +20,21 @@ module KnbAuction
       its(:upcoming) {should have(2).auctions}
     end
     
+    context "lifecycle" do
+      let(:child) { Child.create(full_name: "Yukon Cornelious", goodles: 2000) }
+      
+      it "deducts after completion" do
+        auction = Auction.create(start_at: 1.week.ago, end_at: 1.week.from_now, product: product)
+        KnbAuction::Bid.create(auction: auction, goodles: 200, owner: child)
+        expect(child.goodles).to eql(2000)
+        Timecop.travel(2.weeks.from_now)
+        DelayedJobSpecHelper.work_off
+        child = Child.find_by_full_name("Yukon Cornelious")
+        expect(child.goodles).to eql(1800)
+      end
+    end
     # context "returns" do
-    #   let(:user) { Struct.new("User", :full_name, :goodles).new("Yukon Cornelious", 2000) }
+    #   
     #   
     #   before(:each) do
     #     Auction.new(start_at: 1.months.ago, end_at: 1.month.from_now, product: product)

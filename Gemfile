@@ -15,6 +15,9 @@ gem "less-rails"
 gem "sass-rails"
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-datetimepicker-rails'
+gem 'will_paginate-bootstrap'
+
+gem 'timecop', :group => :test
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

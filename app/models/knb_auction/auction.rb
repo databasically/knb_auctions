@@ -29,23 +29,24 @@ module KnbAuction
     
     
     def enqueue_auction_close
-      # self.delay(:run_at => end_at, :queue => 'auction').close_auction
-      delay(:run_at => 30.seconds.from_now, :queue => 'auction').close_auction
+      self.delay(:run_at => end_at, :queue => 'auction').close_auction
+      # delay(:run_at => 30.seconds.from_now, :queue => 'auction').close_auction
     end
     
     def close_auction
-      # return unless auction_current
-      delay.deduct_goodles
+      return unless auction_current
+      deduct_goodles
       delay.send_guardian_email(:run_at => 1.minute.from_now)
       delay.send_admin_email(:run_at => 1.minute.from_now)
     end
     
     def auction_current
-      updated_at == Auction.find(:id).updated_at
+      updated_at == Auction.find(id).updated_at
     end
     
     def deduct_goodles
-      "Did it!"
+      high_bidder.goodles -= high_bid.goodles
+      high_bidder.save
     end
     
     def send_guardian_email

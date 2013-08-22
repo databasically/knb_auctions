@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207202433) do
+ActiveRecord::Schema.define(:version => 20130822193351) do
+
+  create_table "children", :force => true do |t|
+    t.string   "full_name"
+    t.integer  "goodles"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -30,13 +38,14 @@ ActiveRecord::Schema.define(:version => 20121207202433) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "knb_auction_auctions", :force => true do |t|
-    t.integer  "reserve",       :default => 0, :null => false
+    t.integer  "reserve",            :default => 0, :null => false
     t.datetime "start_at"
     t.datetime "end_at"
     t.integer  "product_id"
     t.integer  "created_by_id"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.datetime "winner_notified_at"
   end
 
   create_table "knb_auction_bids", :force => true do |t|

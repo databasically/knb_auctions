@@ -10,7 +10,7 @@ module KnbAuction
     belongs_to :owner, :class_name => "Child"
     belongs_to :auction
     
-    attr_accessible :goodles, :bid_at, :owner_id, :auction_id, :auction
+    attr_accessible :goodles, :bid_at, :owner, :owner_id, :auction_id, :auction
     
     validates_presence_of :auction
     validates_presence_of :bid_at
