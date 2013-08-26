@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    knb_auction (1.2.2)
+    knb_auction (1.2.3)
       bootstrap-datetimepicker-rails
       delayed_job_active_record
       haml-rails
