@@ -36,8 +36,8 @@ module KnbAuction
     def close_auction
       return unless auction_current
       deduct_goodles
-      delay.send_guardian_email(:run_at => 1.minute.from_now)
-      delay.send_admin_email(:run_at => 1.minute.from_now)
+      # delay.send_guardian_email(:run_at => 1.minute.from_now)
+      # delay.send_admin_email(:run_at => 1.minute.from_now)
     end
     
     def auction_current
@@ -50,11 +50,11 @@ module KnbAuction
     end
     
     def send_guardian_email
-      "Hello!"
+      "Hello Guardian"
     end
     
     def send_admin_email
-      "Hello!"
+      "Hello Admin"
     end
     
     def initialize_working_variables
